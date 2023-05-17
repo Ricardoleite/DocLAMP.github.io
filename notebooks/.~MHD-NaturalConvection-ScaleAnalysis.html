@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MHD-Natural Convection &mdash; Documentação - LAMP 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Documentação - LAMP
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="NaturalConvection-ScaleAnalysis.html">Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MHD-NaturalConvection-ScaleAnalysis.html">MHD-Natural Convection</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Documentação - LAMP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MHD-Natural Convection</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/.~MHD-NaturalConvection-ScaleAnalysis.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="MHD-Natural-Convection">
+<h1>MHD-Natural Convection<a class="headerlink" href="#MHD-Natural-Convection" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<section id="Square-Enclosure">
+<h2>Square Enclosure<a class="headerlink" href="#Square-Enclosure" title="Permalink to this heading"></a></h2>
+<p>Consider a two-dimensional enclosure of height <span class="math notranslate nohighlight">\(H\)</span> and horizontal length <span class="math notranslate nohighlight">\(L\)</span>. The enclosure is filled with a Newtonian fluid such as air or water.</p>
+<p><img alt="ca042889f3d142e6a94f41257436f986" src="../_images/MHD-Nat2.png" /></p>
+<p>We are interested in the transient behavior of the cavity fluid as the sidewalls are instantaneously heated and, respectively, cooled to temperatures <span class="math notranslate nohighlight">\(+\Delta T/2\)</span> and <span class="math notranslate nohighlight">\(-\Delta T/2\)</span>. The top and bottom walls <span class="math notranslate nohighlight">\((y=0,H)\)</span> remain insulated throughout this experiment. Initially, the fluid is isothermal <span class="math notranslate nohighlight">\((T=0)\)</span> and motionless <span class="math notranslate nohighlight">\((u=v=0)\)</span> everywhere inside the cavity.</p>
+</section>
+<section id="Balance-Equations">
+<h2>Balance Equations<a class="headerlink" href="#Balance-Equations" title="Permalink to this heading"></a></h2>
+<p>The equations governing the conservation of mass, momentum, and energy at every point in the cavity are</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial u}{\partial t}+u \frac{\partial u}{\partial x}+v \frac{\partial u}{\partial y}=-\frac{1}{\rho} \frac{\partial P}{\partial x}+\nu\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)-\displaystyle\frac{\sigma B_{0}^{2}}{\rho}u\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial v}{\partial t}+u \frac{\partial v}{\partial x}+v \frac{\partial v}{\partial y}=-\frac{1}{\rho} \frac{\partial P}{\partial y}+\nu\left(\frac{\partial^{2} v}{\partial x^{2}}+\frac{\partial^{2} v}{\partial y^{2}}\right)-g\left[1-\beta\left(T-T_{0}\right)\right]\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial T}{\partial t}+u \frac{\partial T}{\partial x}+v \frac{\partial T}{\partial y}=\alpha\left(\frac{\partial^{2} T}{\partial x^{2}}+\frac{\partial^{2} T}{\partial y^{2}}\right)\)</span></p>
+<p>Note that in writing these equations, we modeled the fluid as Boussinesq-incompressible, in other words, <span class="math notranslate nohighlight">\(\rho=constant\)</span> everywhere except in the body force term of the <span class="math notranslate nohighlight">\(y\)</span> momentum equation, where it is replaced by <span class="math notranslate nohighlight">\(\rho[1-\beta (T-T_{0})]\)</span>. The fluid is permeated by a uniform magnetic field <span class="math notranslate nohighlight">\(B_{0}\)</span> along the y direction, parallel to gravity. Further we assume that the induced electric current does not distort appreciably the applied magnetic field.</p>
+</section>
+<section id="Análise-de-Escala---Bejan">
+<h2>Análise de Escala - Bejan<a class="headerlink" href="#Análise-de-Escala---Bejan" title="Permalink to this heading"></a></h2>
+<p>Instead of solving the above equations numerically, we rely on pure scale analysis to predict theoretically the types of flow and heat transfer patterns that can develop in the enclosure. Immediately after <span class="math notranslate nohighlight">\(t=0\)</span>, the fluid bordering each sidewall is motionless: This means that near the sidewall, the energy equation expresses a balance between thermal inertia and conduction normal to the wall,</p>
+<p><span class="math notranslate nohighlight">\(\frac{\Delta T}{t} \sim \alpha \frac{\Delta T}{\delta_{T}^{2}}.\)</span></p>
+<p>This equality of scales follows from recognizing, <span class="math notranslate nohighlight">\(\Delta T\)</span>, <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\delta_{t}\)</span> as the scales of changes in <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(x\)</span> in the energy equation. In the same equation, we took <span class="math notranslate nohighlight">\(u=v=0\)</span>; we also recognized that <span class="math notranslate nohighlight">\(\partial^{2} T/\partial y^{2} &lt;&lt; \partial^{2} T/\partial x^{2}\)</span> because near <span class="math notranslate nohighlight">\(t=0^{+}\)</span>,the thermal boundary layer thickness <span class="math notranslate nohighlight">\(\delta_{t}\)</span> is much smaller than the enclosure height (note that <span class="math notranslate nohighlight">\(y\sim H\)</span> and
+<span class="math notranslate nohighlight">\(x \sim \delta_{t})\)</span>. A equação acima dictates that immediately following <span class="math notranslate nohighlight">\(t=0\)</span> each sidewall is coated with a conduction layer the thickness of which increases as</p>
+<p><span class="math notranslate nohighlight">\(\delta_{T} \sim(\alpha t)^{1 / 2}.\)</span></p>
+<p>The layer <span class="math notranslate nohighlight">\(\delta_{T}\)</span> rises along the heated wall. The velocity scale of this motion <span class="math notranslate nohighlight">\(v\)</span> is easier to see if we first eliminate the pressure <span class="math notranslate nohighlight">\(P\)</span> between the two momentum equations:</p>
+<p>$</p>
+<p>$</p>
+<p>This new equation contains four basic groups of terms: inertia terms on the left-hand side and four viscous diffusion terms plus the buoyancy and magnetism terms on the right-hand side. It is easy to show that the four terms that dominate each basic group are</p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\partial^{2} v}{\partial x \partial t}}_{Inertia}, \quad \quad \underbrace{\nu\displaystyle\frac{\partial^{3} v}{\partial x^{3}}}_{Friction}, \quad \quad \underbrace{g \beta \displaystyle\frac{\partial T}{\partial x}}_{Buoyancy} , \quad \quad \underbrace{\displaystyle\frac{\sigma B_{0}^{2}}{\rho} \frac{\partial u}{\partial y} \rightarrow \frac{\sigma B_{0}^{2}}{\rho} \frac{\partial v}{\partial x} }_{Magnetism}.\)</span></p>
+<p>In terms of representative scales, the momentum balance:</p>
+<p>$:nbsphinx-math:<cite>displaystyle</cite><span class="math">\frac{v}{\delta_{T} t}</span>, <span class="math">\quad</span><span class="math">\quad `:nbsphinx-math:</span>nu <cite>:nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{v}{delta_{T}^{3}}</cite> <span class="math">\quad</span><span class="math">\quad `:nbsphinx-math:</span>sim <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{g beta Delta T}{delta_{T}}</cite> , <span class="math">\quad</span><span class="math">\quad `:nbsphinx-math:</span>frac{sigma B_{0}^{2}}{rho}`
+<span class="math">\frac{v}{\delta_{T}}</span> $</p>
+<p>The driving force in this balance is the buoyancy effect <span class="math notranslate nohighlight">\((g\beta\Delta T)/\delta_{T}\)</span>, wich is not zero. It is important to determine whether the buoyancy effect is balanced by friction or inertia. Dividing the above equation through the friction scale and recalling that <span class="math notranslate nohighlight">\(\delta_{T}^{2}\sim \alpha t\)</span> yields:</p>
+<p>$:nbsphinx-math:<cite>underbrace{displaystylefrac{1}{Pr}}</cite><em>{Inertia}, :nbsphinx-math:`quad `:nbsphinx-math:`quad  `:nbsphinx-math:`underbrace{1}`</em>{Friction}, <span class="math">\quad  `:nbsphinx-math:</span>sim <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>underbrace{ displaystylefrac{gbetaDelta Tdelta_{T}^{2}}{nu v} }`<em>{Buoyancy} , :nbsphinx-math:`quad `:nbsphinx-math:`quad `:nbsphinx-math:`underbrace{displaystylefrac{sigma B_{0}^{2}delta_{T}^{2}}{rhonu} }`</em>{Magnetism}
+<span class="math">\quad `:nbsphinx-math:</span>quad` <span class="math">\longrightarrow `:nbsphinx-math:</span>quad <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{1}{Pr}`+1- :nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{sigma B_{0}^{2}delta_{T}^{2}}{mu}</cite> <span class="math">\approx `:nbsphinx-math:</span>frac{gbetaDelta Tdelta_{T}^{2}}{nu v}` $</p>
+<p>Therefore, for fluids with Prandtl number of order 1 or greater, the correct momentum balance at <span class="math notranslate nohighlight">\(t=0^{+}\)</span> is between buoyancy and friction,</p>
+<p><span class="math notranslate nohighlight">\(1 \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu v} \quad \rightarrow \quad v \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu }\)</span></p>
+<p>This velocity scale is valid for fluids such as water and oils (<span class="math notranslate nohighlight">\(Pr&gt;1\)</span>) and is marginally valid for gases (<span class="math notranslate nohighlight">\(Pr\sim 1\)</span>).</p>
+</section>
+<section id="Análise-de-Escala---Proposta">
+<h2>Análise de Escala - Proposta<a class="headerlink" href="#Análise-de-Escala---Proposta" title="Permalink to this heading"></a></h2>
+<p>Instead of solving the above equations numerically, we rely on pure scale analysis to predict theoretically the types of flow and heat transfer patterns that can develop in the enclosure. Immediately after <span class="math notranslate nohighlight">\(t=0\)</span>, the fluid bordering each sidewall is motionless: This means that near the sidewall, the energy equation expresses a balance between thermal inertia and conduction normal to the wall,</p>
+<p><span class="math notranslate nohighlight">\(\frac{\Delta T}{t} \sim \alpha \frac{\Delta T}{\delta_{T}^{2}}.\)</span></p>
+<p>This equality of scales follows from recognizing, <span class="math notranslate nohighlight">\(\Delta T\)</span>, <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\delta_{t}\)</span> as the scales of changes in <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(x\)</span> in the energy equation. In the same equation, we took <span class="math notranslate nohighlight">\(u=v=0\)</span>; we also recognized that <span class="math notranslate nohighlight">\(\partial^{2} T/\partial y^{2} &lt;&lt; \partial^{2} T/\partial x^{2}\)</span> because near <span class="math notranslate nohighlight">\(t=0^{+}\)</span>,the thermal boundary layer thickness <span class="math notranslate nohighlight">\(\delta_{t}\)</span> is much smaller than the enclosure height (note that <span class="math notranslate nohighlight">\(y\sim H\)</span> and
+<span class="math notranslate nohighlight">\(x \sim \delta_{t})\)</span>. A equação acima dictates that immediately following <span class="math notranslate nohighlight">\(t=0\)</span> each sidewall is coated with a conduction layer the thickness of which increases as</p>
+<p><span class="math notranslate nohighlight">\(\delta_{T} \sim(\alpha t)^{1 / 2}.\)</span></p>
+<p>The layer <span class="math notranslate nohighlight">\(\delta_{T}\)</span> rises along the heated wall. The velocity scale of this motion <span class="math notranslate nohighlight">\(v\)</span> is easier to see if we first eliminate the pressure <span class="math notranslate nohighlight">\(P\)</span> between the two momentum equations:</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned} \frac{\partial}{\partial x}\left(\frac{\partial v}{\partial t}+u \frac{\partial v}{\partial x}+v \frac{\partial v}{\partial y}\right)-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial t}+u \frac{\partial u}{\partial x}+v \frac{\partial u}{\partial y}\right)= \\ =\nu\left[\frac{\partial}{\partial x}\left(\frac{\partial^{2} v}{\partial x^{2}}+\frac{\partial^{2} v}{\partial y^{2}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)\right]+g \beta \frac{\partial T}{\partial x}+\frac{\sigma B_{0}^{2}}{\rho}\frac{\partial u}{\partial y} \end{aligned}\)</span></p>
+<p>This new equation contains four basic groups of terms: inertia terms on the left-hand side and four viscous diffusion terms plus the buoyancy and magnetism terms on the right-hand side. It is easy to show that the four terms that dominate each basic group are</p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\partial^{2} v}{\partial x \partial t}}_{Inertia}, \quad \quad \underbrace{\nu\displaystyle\frac{\partial^{3} v}{\partial x^{3}}}_{Friction}, \quad \quad \underbrace{g \beta \displaystyle\frac{\partial T}{\partial x}}_{Buoyancy} , \quad \quad \underbrace{\displaystyle\frac{\sigma B_{0}^{2}}{\rho} \frac{\partial u}{\partial y} \rightarrow \frac{\sigma B_{0}^{2}}{\rho} \frac{\partial v}{\partial x} }_{Magnetism}.\)</span></p>
+<p>In terms of representative scales, the momentum balance:</p>
+<p>$ <span class="math">\displaystyle</span><span class="math">\frac{v}{\delta_{T} t}</span>, <span class="math">\quad</span><span class="math">\quad `:nbsphinx-math:</span>nu <cite>:nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{v}{delta_{T}^{3}}</cite> <span class="math">\quad</span><span class="math">\quad `:nbsphinx-math:</span>sim <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{g beta Delta T}{delta_{T}}</cite> , <span class="math">\quad</span><span class="math">\quad `:nbsphinx-math:</span>frac{sigma B_{0}^{2}}{rho}`
+<span class="math">\frac{v}{\delta_{T}}</span> $</p>
+<p>The driving force in this balance is the buoyancy effect <span class="math notranslate nohighlight">\((g\beta\Delta T)/\delta_{T}\)</span>, wich is not zero. It is important to determine whether the buoyancy effect is balanced by friction or inertia. Dividing the above equation through the friction scale and recalling that <span class="math notranslate nohighlight">\(\delta_{T}^{2}\sim \alpha t\)</span> yields:</p>
+<p>$:nbsphinx-math:<cite>underbrace{displaystylefrac{1}{Pr}}</cite><em>{Inertia}, :nbsphinx-math:`quad `:nbsphinx-math:`quad  `:nbsphinx-math:`underbrace{1}`</em>{Friction}, <span class="math">\quad  `:nbsphinx-math:</span>sim <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>underbrace{ displaystylefrac{gbetaDelta Tdelta_{T}^{2}}{nu v} }`<em>{Buoyancy} , :nbsphinx-math:`quad `:nbsphinx-math:`quad `:nbsphinx-math:`underbrace{displaystylefrac{sigma B_{0}^{2}delta_{T}^{2}}{rhonu} }`</em>{Magnetism}
+<span class="math">\quad `:nbsphinx-math:</span>quad` <span class="math">\longrightarrow `:nbsphinx-math:</span>quad <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{1}{Pr}`+1- :nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{sigma B_{0}^{2}delta_{T}^{2}}{mu}</cite> <span class="math">\approx `:nbsphinx-math:</span>frac{gbetaDelta Tdelta_{T}^{2}}{nu v}` $</p>
+<p>Therefore, for fluids with Prandtl number of order 1 or greater, the correct momentum balance at <span class="math notranslate nohighlight">\(t=0^{+}\)</span> is between buoyancy and friction,</p>
+<p><span class="math notranslate nohighlight">\(1 \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu v} \quad \rightarrow \quad v \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu }\)</span></p>
+<p>This velocity scale is valid for fluids such as water and oils (<span class="math notranslate nohighlight">\(Pr&gt;1\)</span>) and is marginally valid for gases (<span class="math notranslate nohighlight">\(Pr\sim 1\)</span>).</p>
+<p>Next, we turn our attention back to the energy equation. The heat conducted from the sidewall into the fluid layer <span class="math notranslate nohighlight">\(\delta_{T}\)</span> is no longer spent solely on thickening the layer: Part of this heat input is carried away by the layer <span class="math notranslate nohighlight">\(\delta_{T}\)</span> rising with velocity <span class="math notranslate nohighlight">\(v\)</span>. Thus, in the energy equation, we see a competition among three distinct effects:</p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\Delta T}{t}}_{Inertia}, \quad \quad \underbrace{v\displaystyle\frac{\Delta T}{H}}_{Convection}, \quad \quad \underbrace{\alpha\displaystyle\frac{\Delta T}{\delta_{T}^{2}}}_{Conduction}.\)</span></p>
+<p>As <span class="math notranslate nohighlight">\(t\)</span> increases, the convection effect increases [<span class="math notranslate nohighlight">\(v\sim t\)</span>], while the effect of inertia decreases in importance. There comes a time <span class="math notranslate nohighlight">\(t_{f}\)</span> when the energy equation expresses a balance between the heat conducted from the wall and the enthalpy carried away vertically by the buoyant layer,</p>
+<p><span class="math notranslate nohighlight">\(v\displaystyle\frac{\Delta T}{H}\sim \alpha\frac{\Delta T}{\delta_{T}^{2}} \quad \rightarrow \quad t_{f}\sim \left( \frac{\nu H}{g\beta \Delta T \alpha} \right)^{1/2}.\)</span></p>
+<p>At such a time, the layer thickness is</p>
+<p><span class="math notranslate nohighlight">\(\delta_{T,f} \sim (\alpha t_{f})^{1/2} \sim HRa^{-1/4}\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(Ra_{H}\)</span> is the Rayleigh number based on the enclosure height,</p>
+<p><span class="math notranslate nohighlight">\(Ra_{H}=\displaystyle\frac{g\beta \Delta T H^{3}}{\alpha\nu}.\)</span></p>
+<p>The time <span class="math notranslate nohighlight">\(t_{f}\)</span> when the <span class="math notranslate nohighlight">\(\delta_{T}\)</span> layer becomes convective could have also been determined by setting inertia ∼ convection in eq. (5.12). Note further that beyond the time <span class="math notranslate nohighlight">\(t_{f}\)</span>, the convection ∼ conduction balance in eq. (5.12) is preserved only if both <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\delta_{T}\)</span> no longer increase in time. Therefore, beyond <span class="math notranslate nohighlight">\(t\sim t_{f}\)</span>, the thermal layers along each sidewall reach a steady state characterized by an energy balance between conduction and
+convection and a momentum balance between buoyancy and viscous diffusion.</p>
+<p>In addition to thermal layers of thickness <span class="math notranslate nohighlight">\(\delta_{T,f}\)</span>, the sidewalls develop viscous (velocity) wall jets. The thickness of these jets <span class="math notranslate nohighlight">\(\delta_{v}\)</span> from the momentum balance (5.7) for the region of thickness <span class="math notranslate nohighlight">\(x \sim \delta_{v}\)</span> outside the thermal layer. In this region, the buoyancy effect is minor, and we have a balance between inertia and viscous diffusion,</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle\frac{v}{\delta_{v}t}\sim \nu\frac{v}{\delta_{v}^{3}} \quad \rightarrow \quad \delta_{v}\sim (\nu t)^{1/2} \sim Pr^{1/2}\delta_{T}.\)</span></p>
+<p>In the steady state, <span class="math notranslate nohighlight">\(t &gt; t_{f}\)</span>, the fluid near each sidewall is characterized by a two-layer structure: a thermal boundary layer of thickness <span class="math notranslate nohighlight">\(\delta_{T,f}\)</span> and a thicker wall jet <span class="math notranslate nohighlight">\(\delta_{v,f} \sim Pr^{1/2}\delta_{T,f}\)</span>. The development of this structure is shown in Figura abaixo.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Ricardo LBM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
