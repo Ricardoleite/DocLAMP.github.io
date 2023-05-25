@@ -1,0 +1,245 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Análise de Escala - MHD\n",
+    "\n",
+    "A presente análise de escala se desenvolve para um problema convecção natural em cavidade preenchida com fluido condutivo e sem blocos interno, o qual escoa pelo efeito de convecção natural sobre ação de um campo magnético."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Geometria do Problema:** Considera-se uma cavidade bidimensional de altura $H$, comprimento $L$, preenchida com um fluido newtoniano. O fluido condutivo é afeta por um campo magnético externo e uniforme $B_{0}$.\n",
+    "\n",
+    "<img src=\"MHD-Nat2.png\" style=\"width:300px;height:300px\"/>\n",
+    "\n",
+    "Neste anślise, estamos interessado no comportamento transiente do fluido pela troca de calor através das paredes da cavidade, nas temperaturas de $+\\Delta T/2$ e $-\\Delta T/2$ nas paredes resfriada e aquecida, respectivamente. As paredes superior e inferior $(y=0,H)$ permanecem isoladas através do tempo. As condições iniciais são de temperatura nula para o fluido $(T=0)$ e campo de velocidades nulo $(u=v=0)$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Equações de balanço\n",
+    "\n",
+    "As equações governantes de balanço de massa, quantidade de movimento e energia na cavidade são descritas por:\n",
+    "\n",
+    "$\\displaystyle\\frac{\\partial u}{\\partial x}+\\frac{\\partial v}{\\partial y}=0$\n",
+    "\n",
+    "$\\displaystyle\\frac{\\partial u}{\\partial t}+u \\frac{\\partial u}{\\partial x}+v \\frac{\\partial u}{\\partial y}=-\\frac{1}{\\rho} \\frac{\\partial P}{\\partial x}+\\nu\\left(\\frac{\\partial^{2} u}{\\partial x^{2}}+\\frac{\\partial^{2} u}{\\partial y^{2}}\\right)-\\displaystyle\\frac{\\sigma B_{0}^{2}}{\\rho}u$\n",
+    "\n",
+    "$\\displaystyle\\frac{\\partial v}{\\partial t}+u \\frac{\\partial v}{\\partial x}+v \\frac{\\partial v}{\\partial y}=-\\frac{1}{\\rho} \\frac{\\partial P}{\\partial y}+\\nu\\left(\\frac{\\partial^{2} v}{\\partial x^{2}}+\\frac{\\partial^{2} v}{\\partial y^{2}}\\right)-g\\left[1-\\beta\\left(T-T_{0}\\right)\\right]$\n",
+    "\n",
+    "$\\displaystyle\\frac{\\partial T}{\\partial t}+u \\frac{\\partial T}{\\partial x}+v \\frac{\\partial T}{\\partial y}=\\alpha\\left(\\frac{\\partial^{2} T}{\\partial x^{2}}+\\frac{\\partial^{2} T}{\\partial y^{2}}\\right)$\n",
+    "\n",
+    "Destaca-se nas equações de balanço de quantidade de movimento a modelagem do fluido como Boussinesq-incompressível, i.e., $\\rho$ constante em toda equação exceto no termo de força da quantidade de movimento em $y$, o qual é representado por $\\rho[1-\\beta (T-T_{0})]$. Adicionalmente, o termo $\\sigma B_{0}^{2}u/\\rho$ descreve a influência do campo magnético na equação de balanço da quantidade de movimento em $x$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Análise de Escala\n",
+    "\n",
+    "Ao invés de resolver numericamente as equações diferenciais parciais descritas acima, dedica-se na presente seção às análises das escalas dos termos para prever teoricamente os tipos de escoamento e padrões de tranferência de calor que se desenvolvem na cavidade. Imediatamente após $t=0$, dado que o fluido próximo a cada parede encontra-se parado, a equação do balanço de energia pode ser expressada em escalas de balanço entre a inércia térmica e condutividade normal a parede,\n",
+    "\n",
+    "$\\displaystyle\\frac{\\Delta T}{t} \\sim \\alpha \\frac{\\Delta T}{\\delta_{T}^{2}}.$\n",
+    "\n",
+    "Esta proporcionalidade de escalas segue do reconhecimento de $\\Delta T$, $t$ e $\\delta_{t}$ como escalas de $T$, $t$ e $x$ no balanço de energia. Na mesma equação, considera-se $u=v=0$ e $\\partial^{2} T/\\partial y^{2} << \\partial^{2} T/\\partial x^{2}$ devido à espessura da camada térmica $\\delta_{t}$ ser muito menor que a altura da cavidade em $t=0^{+}$ (destaca-se para $y\\sim H$ e $x \\sim \\delta_{t}$). A equação acima dita que inicialmente ($t=0^{+}$) as paredes resfriadas e aquecidas são revestidas por uma cada condutiva de expessura que aumenta na ordem\n",
+    "\n",
+    "$\\delta_{T} \\sim(\\alpha t)^{1 / 2}.$\n",
+    "\n",
+    "A escala da velocidade é dominada pelo efeito de empuxo na cavidade próximo aos pontos de maior gradiente de temperatura (paredes verticais resfriada e aquecida). Eliminando o termo de pressão ($P$) pela junção das equações de quantidade de movimento em $x$ e $y$, tem-se a relação\n",
+    "\n",
+    "$\\begin{aligned} \\frac{\\partial}{\\partial x}\\left(\\frac{\\partial v}{\\partial t}+u \\frac{\\partial v}{\\partial x}+v \\frac{\\partial v}{\\partial y}\\right)-\\frac{\\partial}{\\partial y}\\left(\\frac{\\partial u}{\\partial t}+u \\frac{\\partial u}{\\partial x}+v \\frac{\\partial u}{\\partial y}\\right)= \\\\ \\nu\\left[\\frac{\\partial}{\\partial x}\\left(\\frac{\\partial^{2} v}{\\partial x^{2}}+\\frac{\\partial^{2} v}{\\partial y^{2}}\\right)-\\frac{\\partial}{\\partial y}\\left(\\frac{\\partial^{2} u}{\\partial x^{2}}+\\frac{\\partial^{2} u}{\\partial y^{2}}\\right)\\right]+g \\beta \\frac{\\partial T}{\\partial x}+\\frac{\\sigma B_{0}^{2}}{\\rho}\\frac{\\partial u}{\\partial y} \\end{aligned}$\n",
+    "\n",
+    "representada em função apenas dos termos de velocidade, Boussinesq e magnetismo."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A equação acima pode ser dividida em quatro partes: no lado esquerdo da equação tem-se os termos de inércia e no lado direito os termos viscosos, de empuxo e magnetismo. Destacando os termos que predominam em escala de cada uma das partes, têm-se\n",
+    "\n",
+    "$\\underbrace{\\displaystyle\\frac{\\partial^{2} v}{\\partial x \\partial t}}_{Inércia}, \\quad  \\underbrace{\\nu\\displaystyle\\frac{\\partial^{3} v}{\\partial x^{3}}}_{Viscoso}, \\quad \\underbrace{g \\beta \\displaystyle\\frac{\\partial T}{\\partial x}}_{Empuxo}, \\quad \\underbrace{\\displaystyle\\frac{\\sigma B_{0}^{2}}{\\rho} \\frac{\\partial u}{\\partial y} \\rightarrow \\frac{\\sigma B_{0}^{2}}{\\rho} \\frac{\\partial v}{\\partial x} }_{Magnetismo} $\n",
+    "\n",
+    "dado a escala de cada termo\n",
+    "\n",
+    "$\\underbrace{\\displaystyle\\frac{v}{\\delta_{T} t}}_{Inércia} \\quad + \\quad \\underbrace{\\nu \\displaystyle\\frac{v}{\\delta_{T}^{3}}}_{Viscoso} \\quad \\sim \\quad \\underbrace{\\displaystyle\\frac{g \\beta \\Delta T}{\\delta_{T}}}_{Empuxo} \\quad + \\quad \\displaystyle\\frac{\\sigma B_{0}^{2}}{\\rho} \\frac{v}{\\delta_{T}} .$ \n",
+    "\n",
+    "A força que promove o escoamento é dada pelo efeito de empuxo $(g\\beta\\Delta T)/\\delta_{T}$, a qual deve se balancear em relação as forças de inércia, viscosas e magneticas durante o escoamento. Dividindo a equação acima pela viscosidade e substituindo a escala de $\\delta_{T}^{2}\\sim \\alpha t$, tem-se "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\underbrace{\\displaystyle\\frac{1}{Pr}}_{Inércia} \\quad + \\quad  \\underbrace{1}_{Viscoso} \\quad  \\sim \\quad \\underbrace{ \\displaystyle\\frac{g\\beta\\Delta T\\delta_{T}^{2}}{\\nu v} }_{Empuxo} \\quad + \\quad \\underbrace{\\displaystyle\\frac{\\sigma B_{0}^{2}\\delta_{T}^{2}}{\\rho\\nu} }_{Magnetismo}  \\quad \\quad\n",
+    "\\longrightarrow \\quad \\quad \\displaystyle\\frac{1}{Pr}+1- \\displaystyle\\frac{\\sigma B_{0}^{2}\\delta_{T}^{2}}{\\mu} \\approx \\frac{g\\beta\\Delta T\\delta_{T}^{2}}{\\nu v}\n",
+    "$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{C_{0}+C_{1}Pr}{Pr} \\approx \\frac{g\\beta\\Delta T\\delta_{T}^{2}}{\\nu v}+C_{2}\\displaystyle\\frac{\\sigma B_{0}^{2}\\delta_{T}^{2}}{\\mu}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{C_{0}+C_{1}Pr}{Pr\\delta_{T}^{2}} \\approx \\frac{g\\beta\\Delta T}{\\nu v}+C_{2}\\displaystyle\\frac{\\sigma B_{0}^{2}}{\\mu}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{C_{0}+C_{1}Pr}{Pr\\delta_{T}^{2}} \\approx \\frac{g\\beta\\Delta T}{\\nu v}+C_{2}\\displaystyle\\frac{Ha^{2}}{H^{2}}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{C_{0}+C_{1}Pr}{Pr\\delta_{T}^{2}} - C_{2}\\displaystyle\\frac{Ha^{2}}{H^{2}}\\approx \\frac{g\\beta\\Delta T}{\\nu v}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{\\left(C_{0}+C_{1}Pr\\right)H^{2} - C_{2}Pr\\delta_{T}^{2}Ha^{2}}{Pr\\delta_{T}^{2}H^{2}} \\approx \\frac{g\\beta\\Delta T}{\\nu v}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$v \\quad \\sim \\quad \\displaystyle\\frac{g\\beta\\Delta T\\delta_{T}^{2}H^{2}}{\\nu }\\displaystyle\\left(\\frac{Pr}{\\left(C_{0}+C_{1}Pr\\right)H^{2} - C_{2}Pr\\delta_{T}^{2}Ha^{2}}\\right)$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Como próximo passa na análise de escala, a atenção torna-se de volta para a equação de balanço da energia. O calor conduzido das paredes para o fluido pela camada térmica $\\delta_{T}$ não é unicamente gasto através do espaçamento da camada, dado que parte desta entrada de calor é transportada pela camada $\\delta_{T}$ com velocidade $v$ resultante do empuxo. Consequentimente, a equação da energia resulta na competição entre três efeitos distintos:\n",
+    "\n",
+    "$\\underbrace{\\displaystyle\\frac{\\Delta T}{t}}_{Inércia}, \\quad \\quad  \\underbrace{v\\displaystyle\\frac{\\Delta T}{H}}_{Convecção}, \\quad \\quad \\underbrace{\\alpha\\displaystyle\\frac{\\Delta T}{\\delta_{T}^{2}}}_{Condução}.$\n",
+    "\n",
+    "Com o aumento de $t$, o efeito de convecção aumenta enquanto o efeito de inércia diminui em relevância. Considerando o tempo $t_{f}$ como o momento em que o balanço de energia expressa um equilíbrio entre a condução de calor da parede e a entalpia carregada verticalmente pelo empuxo, tem-se"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$v\\displaystyle\\frac{\\Delta T}{H}\\sim \\alpha\\frac{\\Delta T}{\\delta_{T}^{2}} \\quad \\rightarrow \\quad t_{f}\\sim \\left(C_{1} \\frac{\\nu H}{g\\beta \\Delta T \\alpha} \\left(\\frac{C_{0}+Pr}{Pr} \\right) \\right)^{1/2}.$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{g\\beta\\Delta T\\delta_{T}^{2}H}{\\nu }\\displaystyle\\left(\\frac{Pr}{\\left(C_{0}+C_{1}Pr\\right)H^{2} - C_{2}Pr\\delta_{T}^{2}Ha^{2}}\\right) \\sim \\alpha\\frac{1}{\\delta_{T}^{2}}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{g\\beta\\Delta T\\delta_{T}^{2}H}{\\nu }\\displaystyle\\left(\\frac{Pr}{\\left(C_{0}+C_{1}Pr\\right)H^{2} - C_{2}Pr\\delta_{T}^{2}Ha^{2}}\\right) \\sim \\alpha\\frac{1}{\\delta_{T}^{2}}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\displaystyle\\frac{g\\beta\\Delta T\\delta_{T}^{4}H}{\\nu \\alpha} \\sim \\frac{\\left(C_{0}+C_{1}Pr\\right)H^{2} - C_{2}Pr\\delta_{T}^{2}Ha^{2}}{Pr}$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$Ra_{H}\\delta_{T}^{4} \\sim \\displaystyle\\frac{\\left(C_{0}+C_{1}Pr\\right)H^{4}}{Pr} - C_{2}\\delta_{T}^{2}Ha^{2}H^{2}$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.6"
+  },
+  "toc": {
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": false,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": false
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
