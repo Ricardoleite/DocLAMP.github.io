@@ -7,7 +7,6 @@
   <title>Análise de Escala - MHD &mdash; Documentação - LAMP 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -51,6 +50,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Análise de Escala - MHD</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Equações-de-balanço">Equações de balanço</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Análise-de-Escala">Análise de Escala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Correlação-do-Nusselt">Correlação do Nusselt</a></li>
 </ul>
 </li>
 </ul>
@@ -83,7 +83,7 @@
 <h1>Análise de Escala - MHD<a class="headerlink" href="#Análise-de-Escala---MHD" title="Permalink to this heading"></a></h1>
 <p>A presente análise de escala se desenvolve para um problema convecção natural em cavidade preenchida com fluido condutivo e sem blocos interno, o qual escoa pelo efeito de convecção natural sobre ação de um campo magnético.</p>
 <p><strong>Geometria do Problema:</strong> Considera-se uma cavidade bidimensional de altura <span class="math notranslate nohighlight">\(H\)</span>, comprimento <span class="math notranslate nohighlight">\(L\)</span>, preenchida com um fluido newtoniano. O fluido condutivo é afeta por um campo magnético externo e uniforme <span class="math notranslate nohighlight">\(B_{0}\)</span>.</p>
-<p><img alt="aea8155f46974ce781809b79c74d9871" src="../_images/MHD-Nat2.png" /></p>
+<p><img alt="45e3770148b84cbb9fab1ce93cea9934" src="../_images/MHD-Nat2.png" /></p>
 <p>Neste anślise, estamos interessado no comportamento transiente do fluido pela troca de calor através das paredes da cavidade, nas temperaturas de <span class="math notranslate nohighlight">\(+\Delta T/2\)</span> e <span class="math notranslate nohighlight">\(-\Delta T/2\)</span> nas paredes resfriada e aquecida, respectivamente. As paredes superior e inferior <span class="math notranslate nohighlight">\((y=0,H)\)</span> permanecem isoladas através do tempo. As condições iniciais são de temperatura nula para o fluido <span class="math notranslate nohighlight">\((T=0)\)</span> e campo de velocidades nulo <span class="math notranslate nohighlight">\((u=v=0)\)</span>.</p>
 <section id="Equações-de-balanço">
 <h2>Equações de balanço<a class="headerlink" href="#Equações-de-balanço" title="Permalink to this heading"></a></h2>
@@ -105,35 +105,29 @@ que inicialmente (<span class="math notranslate nohighlight">\(t=0^{+}\)</span>)
 <p><span class="math notranslate nohighlight">\(\begin{aligned} \frac{\partial}{\partial x}\left(\frac{\partial v}{\partial t}+u \frac{\partial v}{\partial x}+v \frac{\partial v}{\partial y}\right)-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial t}+u \frac{\partial u}{\partial x}+v \frac{\partial u}{\partial y}\right)= \\ \nu\left[\frac{\partial}{\partial x}\left(\frac{\partial^{2} v}{\partial x^{2}}+\frac{\partial^{2} v}{\partial y^{2}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)\right]+g \beta \frac{\partial T}{\partial x}+\frac{\sigma B_{0}^{2}}{\rho}\frac{\partial u}{\partial y} \end{aligned}\)</span></p>
 <p>representada em função apenas dos termos de velocidade, Boussinesq e magnetismo.</p>
 <p>A equação acima pode ser dividida em quatro partes: no lado esquerdo da equação tem-se os termos de inércia e no lado direito os termos viscosos, de empuxo e magnetismo. Destacando os termos que predominam em escala de cada uma das partes, têm-se</p>
-<p>$:nbsphinx-math:<cite>underbrace{displaystylefrac{partial^{2} v}{partial x partial t}}</cite><em>{Inércia}, :nbsphinx-math:`quad  `:nbsphinx-math:`underbrace{nudisplaystylefrac{partial^{3} v}{partial x^{3}}}`</em>{Viscoso}, <span class="math">\quad `:nbsphinx-math:</span>underbrace{g beta displaystylefrac{partial T}{partial x}}`<em>{Empuxo},
-:nbsphinx-math:`quad `:nbsphinx-math:`underbrace{displaystylefrac{sigma B_{0}^{2}}{rho} frac{partial u}{partial y} rightarrow frac{sigma B_{0}^{2}}{rho} frac{partial v}{partial x} }`</em>{Magnetismo} $</p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\partial^{2} v}{\partial x \partial t}}_{Inércia}, \quad \underbrace{\nu\displaystyle\frac{\partial^{3} v}{\partial x^{3}}}_{Viscoso}, \quad \underbrace{g \beta \displaystyle\frac{\partial T}{\partial x}}_{Empuxo}, \quad \underbrace{\displaystyle\frac{\sigma B_{0}^{2}}{\rho} \frac{\partial u}{\partial y} \rightarrow \frac{\sigma B_{0}^{2}}{\rho} \frac{\partial v}{\partial x} }_{Magnetismo}\)</span></p>
 <p>dado a escala de cada termo</p>
 <p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{v}{\delta_{T} t}}_{Inércia} \quad + \quad \underbrace{\nu \displaystyle\frac{v}{\delta_{T}^{3}}}_{Viscoso} \quad \sim \quad \underbrace{\displaystyle\frac{g \beta \Delta T}{\delta_{T}}}_{Empuxo} \quad + \quad \displaystyle\frac{\sigma B_{0}^{2}}{\rho} \frac{v}{\delta_{T}} .\)</span></p>
 <p>A força que promove o escoamento é dada pelo efeito de empuxo <span class="math notranslate nohighlight">\((g\beta\Delta T)/\delta_{T}\)</span>, a qual deve se balancear em relação as forças de inércia, viscosas e magneticas durante o escoamento. Dividindo a equação acima pela viscosidade e substituindo a escala de <span class="math notranslate nohighlight">\(\delta_{T}^{2}\sim \alpha t\)</span>, tem-se</p>
-<p>$:nbsphinx-math:<cite>underbrace{displaystylefrac{1}{Pr}}</cite><em>{Inércia} :nbsphinx-math:`quad `+ :nbsphinx-math:`quad  `:nbsphinx-math:`underbrace{1}`</em>{Viscoso} <span class="math">\quad  `:nbsphinx-math:</span>sim <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>underbrace{ displaystylefrac{gbetaDelta Tdelta_{T}^{2}}{nu v} }`<em>{Empuxo} :nbsphinx-math:`quad `+ :nbsphinx-math:`quad `:nbsphinx-math:`underbrace{displaystylefrac{sigma B_{0}^{2}delta_{T}^{2}}{rhonu} }`</em>{Magnetismo}
-<span class="math">\quad `:nbsphinx-math:</span>quad` <span class="math">\longrightarrow `:nbsphinx-math:</span>quad <cite>:nbsphinx-math:</cite>quad <cite>:nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{1}{Pr}`+1- :nbsphinx-math:</cite>displaystyle`:nbsphinx-math:<cite>frac{sigma B_{0}^{2}delta_{T}^{2}}{mu}</cite> <span class="math">\approx `:nbsphinx-math:</span>frac{gbetaDelta Tdelta_{T}^{2}}{nu v}` $</p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{C_{0}+C_{1}Pr}{Pr} \approx \frac{g\beta\Delta T\delta_{T}^{2}}{\nu v}+C_{2}\displaystyle\frac{\sigma B_{0}^{2}\delta_{T}^{2}}{\mu}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{C_{0}+C_{1}Pr}{Pr\delta_{T}^{2}} \approx \frac{g\beta\Delta T}{\nu v}+C_{2}\displaystyle\frac{\sigma B_{0}^{2}}{\mu}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{C_{0}+C_{1}Pr}{Pr\delta_{T}^{2}} \approx \frac{g\beta\Delta T}{\nu v}+C_{2}\displaystyle\frac{Ha^{2}}{H^{2}}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{C_{0}+C_{1}Pr}{Pr\delta_{T}^{2}} - C_{2}\displaystyle\frac{Ha^{2}}{H^{2}}\approx \frac{g\beta\Delta T}{\nu v}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{\left(C_{0}+C_{1}Pr\right)H^{2} - C_{2}Pr\delta_{T}^{2}Ha^{2}}{Pr\delta_{T}^{2}H^{2}} \approx \frac{g\beta\Delta T}{\nu v}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{1}{Pr}}_{Inércia} \quad + \quad \underbrace{1}_{Viscoso} \quad \sim \quad \underbrace{ \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu v} }_{Empuxo} \quad + \quad \underbrace{\displaystyle\frac{\sigma B_{0}^{2}\delta_{T}^{2}}{\rho\nu} }_{Magnetismo} \quad \quad \longrightarrow \quad \quad \displaystyle\frac{1}{Pr}+1- \displaystyle\frac{\sigma B_{0}^{2}\delta_{T}^{2}}{\mu} \sim \frac{g\beta\Delta T\delta_{T}^{2}}{\nu v},\)</span></p>
+<p>reescrevendo a equação acima em função de <span class="math notranslate nohighlight">\(v\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(v \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}H^{2}}{\nu }\displaystyle\left(\frac{Pr}{\left(C_{0}+C_{1}Pr\right)H^{2} - C_{2}Pr\delta_{T}^{2}Ha^{2}}\right)\)</span></p>
+<p>onde <span class="math notranslate nohighlight">\(Ha=\sigma H^{2} B_{0}^{2}/\mu\)</span> é o número de Hartmann.</p>
 <p>Como próximo passa na análise de escala, a atenção torna-se de volta para a equação de balanço da energia. O calor conduzido das paredes para o fluido pela camada térmica <span class="math notranslate nohighlight">\(\delta_{T}\)</span> não é unicamente gasto através do espaçamento da camada, dado que parte desta entrada de calor é transportada pela camada <span class="math notranslate nohighlight">\(\delta_{T}\)</span> com velocidade <span class="math notranslate nohighlight">\(v\)</span> resultante do empuxo. Consequentimente, a equação da energia resulta na competição entre três efeitos distintos:</p>
 <p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\Delta T}{t}}_{Inércia}, \quad \quad \underbrace{v\displaystyle\frac{\Delta T}{H}}_{Convecção}, \quad \quad \underbrace{\alpha\displaystyle\frac{\Delta T}{\delta_{T}^{2}}}_{Condução}.\)</span></p>
 <p>Com o aumento de <span class="math notranslate nohighlight">\(t\)</span>, o efeito de convecção aumenta enquanto o efeito de inércia diminui em relevância. Considerando o tempo <span class="math notranslate nohighlight">\(t_{f}\)</span> como o momento em que o balanço de energia expressa um equilíbrio entre a condução de calor da parede e a entalpia carregada verticalmente pelo empuxo, tem-se</p>
-<p><span class="math notranslate nohighlight">\(v\displaystyle\frac{\Delta T}{H}\sim \alpha\frac{\Delta T}{\delta_{T}^{2}} \quad \rightarrow \quad t_{f}\sim \left(C_{1} \frac{\nu H}{g\beta \Delta T \alpha} \left(\frac{C_{0}+Pr}{Pr} \right) \right)^{1/2}.\)</span></p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{g\beta\Delta T\delta_{T}^{2}H}{\nu }\displaystyle\left(\frac{Pr}{\left(C_{0}+C_{1}Pr\right)H^{2} - C_{2}Pr\delta_{T}^{2}Ha^{2}}\right) \sim \alpha\frac{1}{\delta_{T}^{2}}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{g\beta\Delta T\delta_{T}^{2}H}{\nu }\displaystyle\left(\frac{Pr}{\left(C_{0}+C_{1}Pr\right)H^{2} - C_{2}Pr\delta_{T}^{2}Ha^{2}}\right) \sim \alpha\frac{1}{\delta_{T}^{2}}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\displaystyle\frac{g\beta\Delta T\delta_{T}^{4}H}{\nu \alpha} \sim \frac{\left(C_{0}+C_{1}Pr\right)H^{2} - C_{2}Pr\delta_{T}^{2}Ha^{2}}{Pr}\)</span></p>
-<p><span class="math notranslate nohighlight">\(Ra_{H}\delta_{T}^{4} \sim \displaystyle\frac{\left(C_{0}+C_{1}Pr\right)H^{4}}{Pr} - C_{2}\delta_{T}^{2}Ha^{2}H^{2}\)</span></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
+<p><span class="math notranslate nohighlight">\(v\displaystyle\frac{\Delta T}{H}\sim \alpha\frac{\Delta T}{\delta_{T}^{2}} \quad \rightarrow \quad \delta_{T,f}\sim\sqrt{\displaystyle\frac{H\alpha}{v}}.\)</span></p>
+<p>Substituindo a equação de escala da velocidade, obtém-se uma equação quadratica em termos de <span class="math notranslate nohighlight">\(\delta_{T,f}\)</span></p>
+<p><span class="math notranslate nohighlight">\(Ra_{H}\delta_{T}^{4} + C_{2}\delta_{T}^{2}Ha^{2}H^{2} - \displaystyle\frac{\left(C_{0}+C_{1}Pr\right)H^{4}}{Pr} \sim 0\)</span></p>
+<p>onde <span class="math notranslate nohighlight">\(Ra_{H}=g\beta \Delta T H^{3}/(\alpha\nu)\)</span> é o número de Rayleigh baseado na altura da cavidade. Resolvendo a equação acima e reajustando as constantes</p>
+<p><span class="math notranslate nohighlight">\(\delta_{T}^{2}=-C_{2} Ha^{2}H^{2}Ra_{H}^{-1} + H^{2}Ra_{H}^{-1/2}\left(\displaystyle\frac{C_{0}+C_{1}Pr}{Pr}\right)^{1/2} \quad \longrightarrow \quad \delta_{T}=H\left( C_{1} \left(Ra_{H}\left(\displaystyle\frac{Pr}{C_{0}+Pr}\right)\right)^{-1/2} -C_{2} Ha^{2} Ra_{H}^{-1} \right)^{1/2}\)</span></p>
+</section>
+<section id="Correlação-do-Nusselt">
+<h2>Correlação do Nusselt<a class="headerlink" href="#Correlação-do-Nusselt" title="Permalink to this heading"></a></h2>
+<p>Considerando <span class="math notranslate nohighlight">\(\overline{Nu}=\displaystyle\frac{q^{'}}{q^{'}_{\textrm{condução pura}}}\)</span> o número de Nusselt médio no tempo em que cavidade atinge o regime permanente (i.e., <span class="math notranslate nohighlight">\(t_{f}\)</span>), tem-se a fluxo de calor conduzida puramente por condução e o fluxo de calor total dados por</p>
+<p><span class="math notranslate nohighlight">\(q^{'}_{\textrm{condução pura}}=\displaystyle\frac{kH\Delta T}{L} \quad \longrightarrow \quad q^{'}= (\rho v \delta_{T})_{f}c_{P}\Delta T = \displaystyle\frac{k}{\delta_{T,f}} H\Delta T = k\Delta T \left( C_{1} \left(Ra_{H}\left(\displaystyle\frac{Pr}{C_{0}+Pr}\right)\right)^{-1/2} -C_{2} Ha^{2} Ra_{H}^{-1} \right)^{-1/2},\)</span></p>
+<p>substituindo as equações do fluxo de calor obtém-se na forma final a correlação do número de Nusselt médio que estima a capacidade de transferência de calor através da cavidade:</p>
+<p><span class="math notranslate nohighlight">\(\overline{Nu}= \displaystyle\frac{L}{H} \left( C_{1} \left(Ra_{H}\left(\displaystyle\frac{Pr}{C_{0}+Pr}\right)\right)^{-1/2} -C_{2} Ha^{2} Ra_{H}^{-1} \right)^{-1/2}.\)</span></p>
 </section>
 </section>
 

@@ -102,7 +102,7 @@
     "\n",
     "Considerando $\\overline{Nu}=\\displaystyle\\frac{q^{'}}{q^{'}_{\\textrm{condução pura}}}$ o número de Nusselt médio no tempo em que cavidade atinge o regime permanente (i.e., $t_{f}$), tem-se a fluxo de calor conduzida puramente por condução e o fluxo de calor total dados por\n",
     "\n",
-    "$q^{'}_{\\textrm{condução pura}}=\\displaystyle\\frac{kH\\Delta T}{L} \\quad \\longrightarrow \\quad q^{'}= (\\rho v \\delta_{T})_{f}c_{P}\\Delta T =k\\Delta T C_{1}\\left(Ra_{H}\\left( \\displaystyle\\frac{Pr}{C_{0}+Pr}\\right) \\right)^{1/4},$\n",
+    "$q^{'}_{\\textrm{condução pura}}=\\displaystyle\\frac{kH\\Delta T}{L} \\quad \\longrightarrow \\quad q^{'}= (\\rho v \\delta_{T})_{f}c_{P}\\Delta T = \\displaystyle\\frac{k}{\\delta_{T,f}} H\\Delta T = k\\Delta T C_{1}\\left(Ra_{H}\\left( \\displaystyle\\frac{Pr}{C_{0}+Pr}\\right) \\right)^{1/4},$\n",
     "\n",
     "substituindo as equações do fluxo de calor obtém-se na forma final a correlação do número de Nusselt médio que estima a capacidade de transferência de calor através da cavidade: \n",
     "\n",
