@@ -7,21 +7,23 @@
   <title>Análise de Escala - MHD &mdash; Documentação - LAMP 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="# Natural Convection" href="Resultados-1-Bloco-M-120.html" />
     <link rel="prev" title="Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov" href="NaturalConvection-ScaleAnalysis.html" /> 
 </head>
 
@@ -44,7 +46,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Análises:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="NaturalConvection-ScaleAnalysis.html">Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Análise de Escala - MHD</a><ul>
@@ -53,6 +55,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#Correlação-do-Nusselt">Correlação do Nusselt</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resultados:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Resultados-1-Bloco-M-120.html"># Natural Convection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Resultados-1-Bloco-M-120.html#Square-Enclosure">Square Enclosure</a></li>
 </ul>
 
         </div>
@@ -83,7 +90,7 @@
 <h1>Análise de Escala - MHD<a class="headerlink" href="#Análise-de-Escala---MHD" title="Permalink to this heading"></a></h1>
 <p>A presente análise de escala se desenvolve para um problema convecção natural em cavidade preenchida com fluido condutivo e sem blocos interno, o qual escoa pelo efeito de convecção natural sobre ação de um campo magnético.</p>
 <p><strong>Geometria do Problema:</strong> Considera-se uma cavidade bidimensional de altura <span class="math notranslate nohighlight">\(H\)</span>, comprimento <span class="math notranslate nohighlight">\(L\)</span>, preenchida com um fluido newtoniano. O fluido condutivo é afeta por um campo magnético externo e uniforme <span class="math notranslate nohighlight">\(B_{0}\)</span>.</p>
-<p><img alt="45e3770148b84cbb9fab1ce93cea9934" src="../_images/MHD-Nat2.png" /></p>
+<p><img alt="5e30f8931c27400485aada20b5390218" src="../_images/MHD-Nat2.png" /></p>
 <p>Neste anślise, estamos interessado no comportamento transiente do fluido pela troca de calor através das paredes da cavidade, nas temperaturas de <span class="math notranslate nohighlight">\(+\Delta T/2\)</span> e <span class="math notranslate nohighlight">\(-\Delta T/2\)</span> nas paredes resfriada e aquecida, respectivamente. As paredes superior e inferior <span class="math notranslate nohighlight">\((y=0,H)\)</span> permanecem isoladas através do tempo. As condições iniciais são de temperatura nula para o fluido <span class="math notranslate nohighlight">\((T=0)\)</span> e campo de velocidades nulo <span class="math notranslate nohighlight">\((u=v=0)\)</span>.</p>
 <section id="Equações-de-balanço">
 <h2>Equações de balanço<a class="headerlink" href="#Equações-de-balanço" title="Permalink to this heading"></a></h2>
@@ -102,7 +109,7 @@
 que inicialmente (<span class="math notranslate nohighlight">\(t=0^{+}\)</span>) as paredes resfriadas e aquecidas são revestidas por uma cada condutiva de expessura que aumenta na ordem</p>
 <p><span class="math notranslate nohighlight">\(\delta_{T} \sim(\alpha t)^{1 / 2}.\)</span></p>
 <p>A escala da velocidade é dominada pelo efeito de empuxo na cavidade próximo aos pontos de maior gradiente de temperatura (paredes verticais resfriada e aquecida). Eliminando o termo de pressão (<span class="math notranslate nohighlight">\(P\)</span>) pela junção das equações de quantidade de movimento em <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, tem-se a relação</p>
-<p><span class="math notranslate nohighlight">\(\begin{aligned} \frac{\partial}{\partial x}\left(\frac{\partial v}{\partial t}+u \frac{\partial v}{\partial x}+v \frac{\partial v}{\partial y}\right)-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial t}+u \frac{\partial u}{\partial x}+v \frac{\partial u}{\partial y}\right)= \\ \nu\left[\frac{\partial}{\partial x}\left(\frac{\partial^{2} v}{\partial x^{2}}+\frac{\partial^{2} v}{\partial y^{2}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)\right]+g \beta \frac{\partial T}{\partial x}+\frac{\sigma B_{0}^{2}}{\rho}\frac{\partial u}{\partial y} \end{aligned}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial t}+u \frac{\partial v}{\partial x}+v \frac{\partial v}{\partial y}\right)-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial t}+u \frac{\partial u}{\partial x}+v \frac{\partial u}{\partial y}\right)= \nu\left[\frac{\partial}{\partial x}\left(\frac{\partial^{2} v}{\partial x^{2}}+\frac{\partial^{2} v}{\partial y^{2}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)\right]+g \beta \frac{\partial T}{\partial x}+\frac{\sigma B_{0}^{2}}{\rho}\frac{\partial u}{\partial y}\)</span></p>
 <p>representada em função apenas dos termos de velocidade, Boussinesq e magnetismo.</p>
 <p>A equação acima pode ser dividida em quatro partes: no lado esquerdo da equação tem-se os termos de inércia e no lado direito os termos viscosos, de empuxo e magnetismo. Destacando os termos que predominam em escala de cada uma das partes, têm-se</p>
 <p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\partial^{2} v}{\partial x \partial t}}_{Inércia}, \quad \underbrace{\nu\displaystyle\frac{\partial^{3} v}{\partial x^{3}}}_{Viscoso}, \quad \underbrace{g \beta \displaystyle\frac{\partial T}{\partial x}}_{Empuxo}, \quad \underbrace{\displaystyle\frac{\sigma B_{0}^{2}}{\rho} \frac{\partial u}{\partial y} \rightarrow \frac{\sigma B_{0}^{2}}{\rho} \frac{\partial v}{\partial x} }_{Magnetismo}\)</span></p>
@@ -136,6 +143,7 @@ que inicialmente (<span class="math notranslate nohighlight">\(t=0^{+}\)</span>)
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="NaturalConvection-ScaleAnalysis.html" class="btn btn-neutral float-left" title="Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Resultados-1-Bloco-M-120.html" class="btn btn-neutral float-right" title="# Natural Convection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

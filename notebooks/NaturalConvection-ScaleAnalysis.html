@@ -7,16 +7,17 @@
   <title>Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov &mdash; Documentação - LAMP 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
       <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -46,7 +47,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Análises:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Equações-de-balanço">Equações de balanço</a></li>
@@ -55,6 +56,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="MHD-NaturalConvection-ScaleAnalysis.html">Análise de Escala - MHD</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resultados:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Resultados-1-Bloco-M-120.html"># Natural Convection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Resultados-1-Bloco-M-120.html#Square-Enclosure">Square Enclosure</a></li>
 </ul>
 
         </div>
@@ -85,7 +91,7 @@
 <h1>Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov<a class="headerlink" href="#Análise-de-Escala---Dedução-da-Correlação-de-Berkovsky-Polevikov" title="Permalink to this heading"></a></h1>
 <p>A presente observação parte de uma análise de escala do problema convecção natural em cavidade preenchida com fluido newtoniano e sem blocos interno, seguindo em direção à dedução da correlação de Berkovsky-Polevikov para Nusselt médio, a qual é comumente utilizada para caracterização da transferência de calor em cavidades preenchidas com blocos condutores internos.</p>
 <p><strong>Geometria do Problema:</strong> Considera-se uma cavidade bidimensional de altura <span class="math notranslate nohighlight">\(H\)</span>, comprimento <span class="math notranslate nohighlight">\(L\)</span>, preenchida com um fluido newtoniano.</p>
-<p><img alt="9fb06f9346204e55b1f8a61eec8cce57" src="../_images/Enc.png" /></p>
+<p><img alt="99cc46df106c4d8786d3c20b7a96c62a" src="../_images/Enc.png" /></p>
 <p>Neste problema estamos interessado no comportamento transiente do fluido pela troca de calor através das paredes da cavidade, com as temperaturas de <span class="math notranslate nohighlight">\(+\Delta T/2\)</span> e <span class="math notranslate nohighlight">\(-\Delta T/2\)</span> nas paredes resfriada e aquecida, respectivamente. As paredes superior e inferior <span class="math notranslate nohighlight">\((y=0,H)\)</span> permanecem isoladas através do tempo. As condições iniciais são de temperatura nula para o fluido <span class="math notranslate nohighlight">\((T=0)\)</span> e campo de velocidades nulo <span class="math notranslate nohighlight">\((u=v=0)\)</span>.</p>
 <section id="Equações-de-balanço">
 <h2>Equações de balanço<a class="headerlink" href="#Equações-de-balanço" title="Permalink to this heading"></a></h2>
