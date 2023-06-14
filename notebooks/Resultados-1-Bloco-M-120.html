@@ -123,32 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
 <section id="ajuste-de-c-0-e-c-1-para-ha-0">
 <h3>Ajuste de <span class="math notranslate nohighlight">\(C_{0}\)</span> e <span class="math notranslate nohighlight">\(C_{1}\)</span> para Ha=0<a class="headerlink" href="#ajuste-de-c-0-e-c-1-para-ha-0" title="Permalink to this headline"></a></h3>
 <p>Com base no ajuste feito foram obtidos <span class="math notranslate nohighlight">\(C_{0}=0,112888\)</span> e <span class="math notranslate nohighlight">\(C_{1}=0,00649\)</span>. A figura abaixo ilustra o ajuste numérico.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">N1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.59</span><span class="p">,</span><span class="mf">3.88</span><span class="p">,</span><span class="mf">4.21</span><span class="p">,</span><span class="mf">4.27</span><span class="p">,</span><span class="mf">6.95</span><span class="p">,</span><span class="mf">7.44</span><span class="p">,</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">8.74</span><span class="p">])</span>
-<span class="n">gamma</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)))</span>
-<span class="c1"># A1=0.004496</span>
-<span class="c1"># B1=0.0051449</span>
-<span class="n">A1</span><span class="o">=</span><span class="mf">0.00649</span>
-<span class="n">B1</span><span class="o">=</span><span class="mf">0.112888</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)):</span>
-        <span class="n">gamma</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">A1</span><span class="o">*</span><span class="n">Ra</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">Pr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">B1</span><span class="o">+</span><span class="n">Pr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
-<span class="n">gama</span><span class="o">=</span><span class="n">gamma</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">gama</span><span class="p">,</span><span class="n">N1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">CN1</span><span class="o">=</span><span class="n">gama</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">gama</span><span class="p">,</span><span class="n">CN1</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">),</span><span class="s1">&#39;r--&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Nu_</span><span class="si">{av}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">gamma$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;LBM&#39;</span><span class="p">,</span><span class="s1">&#39;Correlação&#39;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">11.</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/6906ad6024b6dab7ea486feab4006531440a24368c3dd081cbe455271a8fea97.png" src="../_images/6906ad6024b6dab7ea486feab4006531440a24368c3dd081cbe455271a8fea97.png" />
 </div>
@@ -165,10 +140,10 @@ const thebe_selector_output = ".output, .cell_output"
 </section>
 <section id="ajuste-de-c-2-para-ha-100">
 <h3>Ajuste de <span class="math notranslate nohighlight">\(C_{2}\)</span> para Ha=100<a class="headerlink" href="#ajuste-de-c-2-para-ha-100" title="Permalink to this headline"></a></h3>
-<p>Com base no ajuste feito foi obtidos <span class="math notranslate nohighlight">\(C_{2}=-20,9\)</span>. A figura abaixo ilustra o ajuste numérico.</p>
+<p>Com base no ajuste feito foi obtidos <span class="math notranslate nohighlight">\(C_{2}=-5,9\)</span>. A figura abaixo ilustra o ajuste numérico.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/094f74ade748affa6863aaca12f27d08d6e25a361df73dde95f334a3ab356981.png" src="../_images/094f74ade748affa6863aaca12f27d08d6e25a361df73dde95f334a3ab356981.png" />
+<img alt="../_images/3b5f365dfb49ac2db42def714879716d00f45708e1dc59bb5ec01d16cb9d0b98.png" src="../_images/3b5f365dfb49ac2db42def714879716d00f45708e1dc59bb5ec01d16cb9d0b98.png" />
 </div>
 </div>
 </section>
