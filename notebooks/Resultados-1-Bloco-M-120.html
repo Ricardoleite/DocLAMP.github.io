@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Natural Convection &mdash; Documentação - LAMP 1.0.0 documentation</title>
+  <title>Resultados Numéricos: MHD - 1 Bloco &mdash; Documentação - LAMP 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-thebe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,9 +20,23 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../_static/design-tabs.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="../_static/sphinx-thebe.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -32,15 +50,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            Documentação - LAMP
+            <a href="../index.html" class="icon icon-home"> Documentação - LAMP
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -48,13 +62,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Análises:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="NaturalConvection-ScaleAnalysis.html">Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NaturalConvection-ScaleAnalysis.html">Análise de Escala - Dedução da Correlação de  Berkovsky-Polevikov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MHD-NaturalConvection-ScaleAnalysis.html">Análise de Escala - MHD</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Resultados:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Simulações:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Natural Convection</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Square-Enclosure">Square Enclosure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Resultados Numéricos: MHD - 1 Bloco</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constantes-de-ajuste">Constantes de Ajuste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ajuste-de-c-0-e-c-1-para-ha-0">Ajuste de <span class="math notranslate nohighlight">\(C_{0}\)</span> e <span class="math notranslate nohighlight">\(C_{1}\)</span> para Ha=0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajuste-de-c-2-para-ha-50">Ajuste de <span class="math notranslate nohighlight">\(C_{2}\)</span> para Ha=50</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ajuste-de-c-2-para-ha-100">Ajuste de <span class="math notranslate nohighlight">\(C_{2}\)</span> para Ha=100</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#correlacao-ajustada">Correlação Ajustada</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#linhas-de-corrente-e-isotermas">Linhas de Corrente e Isotermas</a></li>
 </ul>
 </li>
 </ul>
@@ -72,10 +93,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Natural Convection</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Resultados Numéricos: MHD - 1 Bloco</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/notebooks/Resultados-1-Bloco-M-120.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/notebooks/Resultados-1-Bloco-M-120.ipynb" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -83,539 +104,422 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Natural-Convection">
-<h1>Natural Convection<a class="headerlink" href="#Natural-Convection" title="Permalink to this heading"></a></h1>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
-<span class="n">raw</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/ricardo/Documents/Mag-NatConv/Figs-VT-B1-M120/Nu-B1-M120.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[:]</span>
-<span class="n">r1</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">raw</span> <span class="p">]</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
-<span class="n">uv</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; * &#39;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="p">]</span>
-<span class="n">Nu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">uv</span><span class="p">[:])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Ha</span><span class="p">))</span>
-<span class="n">raw</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/ricardo/Documents/Mag-NatConv/Figs-VT-B1-M120/Psi-B1-M120.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[:]</span>
-<span class="n">r1</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">raw</span> <span class="p">]</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
-<span class="n">uv</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; * &#39;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="p">]</span>
-<span class="n">Psi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">uv</span><span class="p">[:])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Ha</span><span class="p">))</span>
-</pre></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="resultados-numericos-mhd-1-bloco">
+<h1>Resultados Numéricos: MHD - 1 Bloco<a class="headerlink" href="#resultados-numericos-mhd-1-bloco" title="Permalink to this headline"></a></h1>
+<p>Abaixo são apresentados os resultados de Nusselt médio obtidos em função do número de Rayleigh.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/5cd337cb3963dff8386b3c09bdf1b293f00d84f537e5f9378a02045f647686cc.png" src="../_images/5cd337cb3963dff8386b3c09bdf1b293f00d84f537e5f9378a02045f647686cc.png" />
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NuPr0H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa0H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr1H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa1H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr2H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa2H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr3H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa3H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr0H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa0H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr1H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa1H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr2H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa2H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr3H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa3H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr0H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa0H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr1H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa1H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr2H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa2H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">NuPr3H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">NuRa3H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
+<section id="constantes-de-ajuste">
+<h2>Constantes de Ajuste<a class="headerlink" href="#constantes-de-ajuste" title="Permalink to this headline"></a></h2>
+<p>Com base nos resultados numéricos as constantes <span class="math notranslate nohighlight">\(C_{0}\)</span>, <span class="math notranslate nohighlight">\(C_{1}\)</span> e <span class="math notranslate nohighlight">\(C_{2}\)</span> são ajustadas para o caso de 1 bloco. Dado a correlação obtida</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{Nu}= \displaystyle\frac{L}{H} \gamma^{-1/2} =\displaystyle\frac{L}{H} \left( C_{1} \left(Ra_{H}\left(\displaystyle\frac{Pr}{C_{0}+Pr}\right)\right)^{-1/2} -C_{2}  Ha^{2} Ra_{H}^{-1} \right)^{-1/2},
+\]</div>
+<p>as constantes <span class="math notranslate nohighlight">\(C_{0}\)</span> e <span class="math notranslate nohighlight">\(C_{1}\)</span> são ajustados com base nos resultados obtidos <span class="math notranslate nohighlight">\(Ha=0\)</span> e a constante <span class="math notranslate nohighlight">\(C_{2}\)</span> como uma média dos valores ajustados para <span class="math notranslate nohighlight">\(Ha=50\)</span> e <span class="math notranslate nohighlight">\(Ha=100\)</span>;</p>
+<section id="ajuste-de-c-0-e-c-1-para-ha-0">
+<h3>Ajuste de <span class="math notranslate nohighlight">\(C_{0}\)</span> e <span class="math notranslate nohighlight">\(C_{1}\)</span> para Ha=0<a class="headerlink" href="#ajuste-de-c-0-e-c-1-para-ha-0" title="Permalink to this headline"></a></h3>
+<p>Com base no ajuste feito foram obtidos <span class="math notranslate nohighlight">\(C_{0}=0,112888\)</span> e <span class="math notranslate nohighlight">\(C_{1}=0,00649\)</span>. A figura abaixo ilustra o ajuste numérico.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">N1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.59</span><span class="p">,</span><span class="mf">3.88</span><span class="p">,</span><span class="mf">4.21</span><span class="p">,</span><span class="mf">4.27</span><span class="p">,</span><span class="mf">6.95</span><span class="p">,</span><span class="mf">7.44</span><span class="p">,</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">8.74</span><span class="p">])</span>
+<span class="n">gamma</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)))</span>
+<span class="c1"># A1=0.004496</span>
+<span class="c1"># B1=0.0051449</span>
+<span class="n">A1</span><span class="o">=</span><span class="mf">0.00649</span>
+<span class="n">B1</span><span class="o">=</span><span class="mf">0.112888</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)):</span>
+        <span class="n">gamma</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">A1</span><span class="o">*</span><span class="n">Ra</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">Pr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">B1</span><span class="o">+</span><span class="n">Pr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+<span class="n">gama</span><span class="o">=</span><span class="n">gamma</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span>
 
-<span class="n">PsiPr0H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa0H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr1H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa1H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr2H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa2H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr3H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa3H0</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr0H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa0H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr1H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa1H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr2H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa2H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr3H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa3H1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr0H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa0H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr1H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa1H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr2H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa2H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="n">PsiPr3H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">PsiRa3H2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">))</span><span class="o">*</span><span class="mf">0.0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">)):</span>
-    <span class="n">NuPr0H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuPr1H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuPr2H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuPr3H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuPr0H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuPr1H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuPr2H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuPr3H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuPr0H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">NuPr1H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">NuPr2H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">NuPr3H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)):</span>
-    <span class="n">NuRa0H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuRa1H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuRa2H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuRa3H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">NuRa0H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuRa1H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuRa2H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuRa3H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">NuRa0H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">NuRa1H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">NuRa2H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">NuRa3H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Nu</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ra</span><span class="p">)):</span>
-    <span class="n">PsiPr0H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">PsiPr1H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">PsiPr2H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">PsiPr3H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">PsiPr0H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">PsiPr1H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">PsiPr2H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">PsiPr3H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">PsiPr0H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">PsiPr1H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">PsiPr2H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">PsiPr3H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Pr</span><span class="p">)):</span>
-    <span class="n">PsiRa0H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">PsiRa1H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">PsiRa2H0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">PsiRa0H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">PsiRa1H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">PsiRa2H1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">PsiRa0H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">PsiRa1H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">PsiRa2H2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Psi</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">NuRa0H0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">NuRa0H1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">NuRa0H2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[1.01 1.01 1.01 1.01]
-[1.01 1.01 1.01 1.01]
-[1.01 1.01 1.01 1.01]
-</pre></div></div>
-</div>
-<section id="Square-Enclosure">
-<h2>Square Enclosure<a class="headerlink" href="#Square-Enclosure" title="Permalink to this heading"></a></h2>
-<p>Consider a two-dimensional enclosure of height <span class="math notranslate nohighlight">\(H\)</span> and horizontal length <span class="math notranslate nohighlight">\(L\)</span>. The enclosure is filled with a Newtonian fluid such as air or water.</p>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg  "width:100%"
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style><table class="tg"><thead><tr><th class="tg-baqh"></th><th class="tg-baqh" colspan="8"><p><span class="math notranslate nohighlight">\(Ra=10^{3}\)</span></p>
-</th></tr></thead><tbody><tr><td class="tg-baqh"></td><td class="tg-baqh" colspan="4"><p>Campo de Streamlines</p>
-</td><td class="tg-baqh" colspan="4"><p>Linhas Isotermas</p>
-</td></tr><tr><td class="tg-baqh"></td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p>
-</td><td class="tg-baqh"><p><img alt="2ae329bf68b6468680a34da1efb947f0" src="../_images/StF-Ra=1000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="8ab90eaaa7c24fad89c8c5de8da8c623" src="../_images/StF-Ra=1000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="7a7a5ba26465493ca528adc44225e352" src="../_images/StF-Ra=1000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="899581d1fdd2454b8a906b674ba3910c" src="../_images/StF-Ra=1000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="869a67db66bc4c4591b5b5affa9b59c5" src="../_images/IsoT-Ra=1000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="bcac6bba1e904ca3a94c97c55d4ba67a" src="../_images/IsoT-Ra=1000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="3af4429ef8e94624930a7ca02bed4f5f" src="../_images/IsoT-Ra=1000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="6f5bad5e6ff240e4ba2670632a5d7326" src="../_images/IsoT-Ra=1000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p>
-</td><td class="tg-baqh"><p><img alt="f0435dc5988442e39d27390e0071dd44" src="../_images/StF-Ra=1000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="f944fa39efff4ff7af66ec252776aa6b" src="../_images/StF-Ra=1000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="646d3cad23df49258bd5084d177fb8b2" src="../_images/StF-Ra=1000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="901d15f69d274c85bb9aefbdad841654" src="../_images/StF-Ra=1000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="ba258fa1b6ad412893a31467389877dd" src="../_images/IsoT-Ra=1000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="362e5e6692d74a718cda7d47939b2d3b" src="../_images/IsoT-Ra=1000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="759724f59aaf41089e929083846fd340" src="../_images/IsoT-Ra=1000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="c0f7ae548c404286af03ff9134a69f9d" src="../_images/IsoT-Ra=1000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-0lax" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p>
-</td><td class="tg-baqh"><p><img alt="f8f107699b8b4660b05b51e28456694c" src="../_images/StF-Ra=1000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="8091755e5d3b48ef83f68f9f3d58e680" src="../_images/StF-Ra=1000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="068a3533227c4adaad35c676d1783579" src="../_images/StF-Ra=1000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="0011ed940f3f4d4b8bb1b9f2eae658b8" src="../_images/StF-Ra=1000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="5b0e9fa0c4644b56819f0ddc3556edc9" src="../_images/IsoT-Ra=1000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="0dae813cc7964e47b17958e4ef02e934" src="../_images/IsoT-Ra=1000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="d3413206e54f4569b053fd52e9b73888" src="../_images/IsoT-Ra=1000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="0551257ea4764a44a93649cc755669f2" src="../_images/IsoT-Ra=1000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr></tbody></table><style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style><table class="tg"><thead><tr><th class="tg-baqh"></th><th class="tg-baqh" colspan="8"><p><span class="math notranslate nohighlight">\(Ra=10^{4}\)</span></p>
-</th></tr></thead><tbody><tr><td class="tg-baqh"></td><td class="tg-baqh" colspan="4"><p>Campo de Streamlines</p>
-</td><td class="tg-baqh" colspan="4"><p>Linhas Isotermas</p>
-</td></tr><tr><td class="tg-baqh"></td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p>
-</td><td class="tg-baqh"><p><img alt="3fa037d922d7476080836ed8705b4528" src="../_images/StF-Ra=10000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="31d6159288d04d06a75a4a364c43b113" src="../_images/StF-Ra=10000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="2b017226e25a4f339e3ab4146feef347" src="../_images/StF-Ra=10000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="450aa6861a9a416cb3d17f6e12251b64" src="../_images/StF-Ra=10000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="0b460785227f42a1ab3948b14805b24e" src="../_images/IsoT-Ra=10000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="19bb8f6580684b4cb180775d8d4e2c1c" src="../_images/IsoT-Ra=10000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="54efcfe79912498aabc0ff8876dc63a8" src="../_images/IsoT-Ra=10000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="641a12edba1a4df98612f14678cc5ad6" src="../_images/IsoT-Ra=10000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p>
-</td><td class="tg-baqh"><p><img alt="14f963f6b6f04b1d8e92f08c0a54fd7d" src="../_images/StF-Ra=10000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="1eca57629de347e1a66dd2085ea63ef4" src="../_images/StF-Ra=10000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="8846c4496d0940c28ee655c8b0671e75" src="../_images/StF-Ra=10000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="fec4125c4ee741708353ede4c2969616" src="../_images/StF-Ra=10000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="d40663e707b14393b81ab51e57a680a7" src="../_images/IsoT-Ra=10000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="08e69025fe3d4165ba7460665a6394eb" src="../_images/IsoT-Ra=10000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="e9a53e14983841d9a2ac0f02b816840b" src="../_images/IsoT-Ra=10000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="b4bba623057b42fa8df7e55ee768cef0" src="../_images/IsoT-Ra=10000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-0lax" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p>
-</td><td class="tg-baqh"><p><img alt="d0ee7ce936b0459c8813aeef6ee86335" src="../_images/StF-Ra=10000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="c0bd9b39241548c2b4b1b97396bb498b" src="../_images/StF-Ra=10000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="e9f95b2d122d4e82bb3f5d631380ec03" src="../_images/StF-Ra=10000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="95c3be1f67e9427f8209e86d25d4c22c" src="../_images/StF-Ra=10000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="b5630b0526bd40e2be8d46be55e66b44" src="../_images/IsoT-Ra=10000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="a2dd52ab0f944963bf46531089c327c9" src="../_images/IsoT-Ra=10000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="f79ac31492e3467180eec0139fd2ce96" src="../_images/IsoT-Ra=10000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="88a976894c7241678cf634812cde32c2" src="../_images/IsoT-Ra=10000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr></tbody></table><style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style><table class="tg"><thead><tr><th class="tg-baqh"></th><th class="tg-baqh" colspan="8"><p><span class="math notranslate nohighlight">\(Ra=10^{4}\)</span></p>
-</th></tr></thead><tbody><tr><td class="tg-baqh"></td><td class="tg-baqh" colspan="4"><p>Campo de Streamlines</p>
-</td><td class="tg-baqh" colspan="4"><p>Linhas Isotermas</p>
-</td></tr><tr><td class="tg-baqh"></td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p>
-</td><td class="tg-baqh"><p><img alt="39d5d2efe5bf4e998883d57b409113c7" src="../_images/StF-Ra=100000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="bb6aa7798dbb45428a1f049c56fd6d2c" src="../_images/StF-Ra=100000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="27eb769fce704c6382aa121fe0b03deb" src="../_images/StF-Ra=100000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="f0b22763dd6349c69c613dc48761da1d" src="../_images/StF-Ra=100000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="06e02db9f3424f79b1d17634d24fe975" src="../_images/IsoT-Ra=100000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="a1d52879bb11458ebfd26a4a4c2c1497" src="../_images/IsoT-Ra=100000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="bfe33afaf1724e95a7423b793eaf972f" src="../_images/IsoT-Ra=100000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="2e63b3169d254ec28d7068f96a14fb98" src="../_images/IsoT-Ra=100000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p>
-</td><td class="tg-baqh"><p><img alt="9b65c366e8774398805784cb4f8f2d75" src="../_images/StF-Ra=100000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="d4d973641f824014b3851d58f0e44fd9" src="../_images/StF-Ra=100000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="5474a50856ec4623baf97ef6d5daaa06" src="../_images/StF-Ra=100000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="fdfdfd78f8c84453bf9e5d5d078213d5" src="../_images/StF-Ra=100000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="d18d7b723b7343fe82de74f7921be086" src="../_images/IsoT-Ra=100000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="dc58017e769c4ae0a8b5b5437c470ab0" src="../_images/IsoT-Ra=100000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="4326b6408d2546f0a2cdd53d1bccb2e8" src="../_images/IsoT-Ra=100000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="68ef6c82419043eaba0624605f848ea4" src="../_images/IsoT-Ra=100000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-0lax" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p>
-</td><td class="tg-baqh"><p><img alt="325d48b8e6824ce99bb5751be62de47e" src="../_images/StF-Ra=100000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="0966ae48c3fa456582dc3df06a4833bc" src="../_images/StF-Ra=100000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="900fc17fbf8c497397c899feeacc909d" src="../_images/StF-Ra=100000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="bd0f13c7ea2e41a6b479c25a6b54cd4a" src="../_images/StF-Ra=100000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="484d6865195c4bb692e8f1a8f24a3e7a" src="../_images/IsoT-Ra=100000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="afe239479c8c47198d84c7ca4781dde2" src="../_images/IsoT-Ra=100000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="7bd96eb1557749f28656793cba4aa0f9" src="../_images/IsoT-Ra=100000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="b607304af88943309b2aec0022fb156e" src="../_images/IsoT-Ra=100000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr></tbody></table><style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style><table class="tg"><thead><tr><th class="tg-baqh"></th><th class="tg-baqh" colspan="8"><p><span class="math notranslate nohighlight">\(Ra=10^{4}\)</span></p>
-</th></tr></thead><tbody><tr><td class="tg-baqh"></td><td class="tg-baqh" colspan="4"><p>Campo de Streamlines</p>
-</td><td class="tg-baqh" colspan="4"><p>Linhas Isotermas</p>
-</td></tr><tr><td class="tg-baqh"></td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p>
-</td><td class="tg-baqh"><p><img alt="6b2284f43fa54464b36a7e8fafbd2bfd" src="../_images/StF-Ra=1000000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="4b9da8c7256d4bb18db649e2254411b4" src="../_images/StF-Ra=1000000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="a986d321f04c4c9ca17f2237e7bde2c3" src="../_images/StF-Ra=1000000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="71e4bed5a13148f7a3c34d4f575a6e4e" src="../_images/StF-Ra=1000000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="2f8bc9c7ee8147a2b2d72428898426b4" src="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="cab97584ca7842639e3958d99fd1b8e9" src="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="6c27d99edddd4adca3dac51824f7dea7" src="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="14f81421223349d08c29175db412f424" src="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-baqh" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p>
-</td><td class="tg-baqh"><p><img alt="eab7d1b11f804d32b112864f0a250abc" src="../_images/StF-Ra=1000000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="a7c98ce66286412f97bb7991952ceeb4" src="../_images/StF-Ra=1000000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="d494dfee892c4c739c7e42e747bbbd0f" src="../_images/StF-Ra=1000000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="958f610f5a9d40828a0e56b663c8f377" src="../_images/StF-Ra=1000000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="61e490a234a94cfa8bc5099a2607c73c" src="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="dba77f2fc8db4e2db4a9d2f96efbac90" src="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="49e07261e5934ed38f9f7e3942d9f5fe" src="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="e39904ab32aa43a6968bfde9f940d704" src="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr><tr><td class="tg-0lax" rowspan="2"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p>
-</td><td class="tg-baqh"><p><img alt="74cb88ffc1a545f19ffe5771d6207d47" src="../_images/StF-Ra=1000000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="30c294cec9b54f8baae12125a20bee64" src="../_images/StF-Ra=1000000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="790fc2c533fe4ddda880cc3070bedc57" src="../_images/StF-Ra=1000000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="4c11ee5bbf594df39ea361edbbd5752b" src="../_images/StF-Ra=1000000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="8cb1481c57924661987a26304503b2c4" src="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="afd9aa36ab1e4bbab45b8ac9a7671fe4" src="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="8a43f1e679d54a32a0d9f4a7622c7190" src="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p>
-</td><td class="tg-baqh"><p><img alt="2d8304e66dae45beb3b24c9db0a13fe0" src="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p>
-</td></tr><tr><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td><td class="tg-baqh"><p><span class="math notranslate nohighlight">\(Nu_{av}=XX\)</span></p>
-</td></tr></tbody></table><div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr0H0</span><span class="p">,</span><span class="s1">&#39;ko:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr1H0</span><span class="p">,</span><span class="s1">&#39;ks:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr2H0</span><span class="p">,</span><span class="s1">&#39;k&gt;:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr3H0</span><span class="p">,</span><span class="s1">&#39;kd:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr0H1</span><span class="p">,</span><span class="s1">&#39;ro:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr1H1</span><span class="p">,</span><span class="s1">&#39;rs:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr2H1</span><span class="p">,</span><span class="s1">&#39;r&gt;:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr3H1</span><span class="p">,</span><span class="s1">&#39;rd:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr0H2</span><span class="p">,</span><span class="s1">&#39;bo:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr1H2</span><span class="p">,</span><span class="s1">&#39;bs:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr2H2</span><span class="p">,</span><span class="s1">&#39;b&gt;:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuPr3H2</span><span class="p">,</span><span class="s1">&#39;bd:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">gama</span><span class="p">,</span><span class="n">N1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">CN1</span><span class="o">=</span><span class="n">gama</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">gama</span><span class="p">,</span><span class="n">CN1</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mf">2.</span><span class="p">),</span><span class="s1">&#39;r--&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Nu_</span><span class="si">{av}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$Ra$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;$Pr=0.05-Ha=0$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.1-Ha=0$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.5-Ha=0$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=1.0-Ha=0$&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;$Pr=0.05-Ha=50$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.1-Ha=50$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.5-Ha=50$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=1.0-Ha=50$&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;$Pr=0.05-Ha=100$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.1-Ha=100$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.5-Ha=100$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=1.0-Ha=100$&#39;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">11.</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">gamma$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;LBM&#39;</span><span class="p">,</span><span class="s1">&#39;Correlação&#39;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">11.</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/notebooks_Resultados-1-Bloco-M-120_9_0.png" src="../_images/notebooks_Resultados-1-Bloco-M-120_9_0.png" />
+<div class="cell_output docutils container">
+<img alt="../_images/6906ad6024b6dab7ea486feab4006531440a24368c3dd081cbe455271a8fea97.png" src="../_images/6906ad6024b6dab7ea486feab4006531440a24368c3dd081cbe455271a8fea97.png" />
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuRa0H0</span><span class="p">,</span><span class="s1">&#39;ko:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuRa1H0</span><span class="p">,</span><span class="s1">&#39;ko:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuRa2H0</span><span class="p">,</span><span class="s1">&#39;ko:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">NuRa3H0</span><span class="p">,</span><span class="s1">&#39;ko:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+</section>
+<section id="ajuste-de-c-2-para-ha-50">
+<h3>Ajuste de <span class="math notranslate nohighlight">\(C_{2}\)</span> para Ha=50<a class="headerlink" href="#ajuste-de-c-2-para-ha-50" title="Permalink to this headline"></a></h3>
+<p>Com base no ajuste feito foi obtidos <span class="math notranslate nohighlight">\(C_{2}=-5,1\)</span>. A figura abaixo ilustra o ajuste numérico.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/dd14a5c638943e094c406d0e246240c8c2ab92f3181b7aeadbd7020988f5ff69.png" src="../_images/dd14a5c638943e094c406d0e246240c8c2ab92f3181b7aeadbd7020988f5ff69.png" />
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7fb52e2de3b0&gt;]
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/notebooks_Resultados-1-Bloco-M-120_10_1.png" src="../_images/notebooks_Resultados-1-Bloco-M-120_10_1.png" />
+</section>
+<section id="ajuste-de-c-2-para-ha-100">
+<h3>Ajuste de <span class="math notranslate nohighlight">\(C_{2}\)</span> para Ha=100<a class="headerlink" href="#ajuste-de-c-2-para-ha-100" title="Permalink to this headline"></a></h3>
+<p>Com base no ajuste feito foi obtidos <span class="math notranslate nohighlight">\(C_{2}=-20,9\)</span>. A figura abaixo ilustra o ajuste numérico.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/094f74ade748affa6863aaca12f27d08d6e25a361df73dde95f334a3ab356981.png" src="../_images/094f74ade748affa6863aaca12f27d08d6e25a361df73dde95f334a3ab356981.png" />
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">NuRa0H0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">NuRa1H0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">NuRa2H0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">NuRa3H0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[1.01 1.01 1.01 1.01]
-[1.34 1.37 1.4  1.4 ]
-[3.59 3.88 4.21 4.27]
-[6.95 7.44 8.5  8.74]
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr0H0</span><span class="p">,</span><span class="s1">&#39;ko:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr1H0</span><span class="p">,</span><span class="s1">&#39;ks:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr2H0</span><span class="p">,</span><span class="s1">&#39;k&gt;:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr3H0</span><span class="p">,</span><span class="s1">&#39;kd:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr0H1</span><span class="p">,</span><span class="s1">&#39;ro:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr1H1</span><span class="p">,</span><span class="s1">&#39;rs:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr2H1</span><span class="p">,</span><span class="s1">&#39;r&gt;:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr3H1</span><span class="p">,</span><span class="s1">&#39;rd:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr0H2</span><span class="p">,</span><span class="s1">&#39;bo:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr1H2</span><span class="p">,</span><span class="s1">&#39;bs:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr2H2</span><span class="p">,</span><span class="s1">&#39;b&gt;:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">Ra</span><span class="p">,</span><span class="n">PsiPr3H2</span><span class="p">,</span><span class="s1">&#39;bd:&#39;</span><span class="p">,</span><span class="n">fillstyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">Psi_</span><span class="si">{max}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$Ra$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;$Pr=0.05-Ha=0$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.1-Ha=0$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.5-Ha=0$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=1.0-Ha=0$&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;$Pr=0.05-Ha=50$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.1-Ha=50$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.5-Ha=50$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=1.0-Ha=50$&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;$Pr=0.05-Ha=100$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.1-Ha=100$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=0.5-Ha=100$&#39;</span><span class="p">,</span><span class="s1">&#39;$Pr=1.0-Ha=100$&#39;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mf">11.</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+</section>
+<section id="correlacao-ajustada">
+<h3>Correlação Ajustada<a class="headerlink" href="#correlacao-ajustada" title="Permalink to this headline"></a></h3>
+<p>Tirando a média de <span class="math notranslate nohighlight">\(C_{2}\)</span>, tem-se <span class="math notranslate nohighlight">\(C_{2}\)</span>=-5,5. Portanto, a correlação ajustada é dada por</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{Nu}= \displaystyle\frac{L}{H} \gamma^{-1/2} =\displaystyle\frac{L}{H} \left( 0,00649 \left(Ra_{H}\left(\displaystyle\frac{Pr}{0,112888
+  +Pr}\right)\right)^{-1/2} +5,5  Ha^{2} Ra_{H}^{-1} \right)^{-1/2}.
+\]</div>
+<p>O gráfico abaixo ilustra o ajuste geral da correlação obtida.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/dfa4f7d7e642b4d9e3e4cd525c92d1e0e2fe1a5493985d06f6549bc9531892b3.png" src="../_images/dfa4f7d7e642b4d9e3e4cd525c92d1e0e2fe1a5493985d06f6549bc9531892b3.png" />
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/notebooks_Resultados-1-Bloco-M-120_12_0.png" src="../_images/notebooks_Resultados-1-Bloco-M-120_12_0.png" />
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
+</section>
+</section>
+<section id="linhas-de-corrente-e-isotermas">
+<h2>Linhas de Corrente e Isotermas<a class="headerlink" href="#linhas-de-corrente-e-isotermas" title="Permalink to this headline"></a></h2>
+<p><strong>Tabela - Linhas de corrente e isotermas para <span class="math notranslate nohighlight">\(Ra=10^{3}\)</span>.</strong></p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela - Linhas de corrente e isotermas para <span class="math notranslate nohighlight">\(Ra=10^{4}\)</span>.</strong></p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.34\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.37\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.40\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.40\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.03\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.03\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.03\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.03\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=10000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=10000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=10000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=10000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.01\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela - Linhas de corrente e isotermas para <span class="math notranslate nohighlight">\(Ra=10^{5}\)</span>.</strong></p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=3.59\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=3.88\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=4.21\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=4.27\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.89\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.90\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.91\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.91\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=100000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=100000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=100000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=100000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.16\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.16\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.16\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=1.16\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela - Linhas de corrente e isotermas para <span class="math notranslate nohighlight">\(Ra=10^{6}\)</span>.</strong></p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.05\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.10\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=0.50\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(Pr=1.00\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=0\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=0-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=0-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=6.95\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=7.44\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=8.50\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=8.74\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=50\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=50-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=50-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=5.64\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=5.87\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=6.18\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=6.22\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(Ha=100\)</span></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/StF-Ra=1000000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/StF-Ra=1000000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.050-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.100-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=0.500-Ha=100-B=1-P=1-N=120.png" /></p></td>
+<td class="text-center"><p><img alt="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" src="../_images/IsoT-Ra=1000000-Pr=1.000-Ha=100-B=1-P=1-N=120.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\Psi_{max}=XX\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=3.64\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=3.68\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=3.71\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Nu_{av}=3.71\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
            </div>
           </div>

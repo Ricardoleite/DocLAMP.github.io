@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov &mdash; Documentação - LAMP 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-thebe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,9 +20,23 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../_static/design-tabs.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="../_static/sphinx-thebe.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -33,15 +51,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            Documentação - LAMP
+            <a href="../index.html" class="icon icon-home"> Documentação - LAMP
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -49,18 +63,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Análises:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Equações-de-balanço">Equações de balanço</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Análise-de-Escala">Análise de Escala</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Correlação-de-Berkovsky-Polevikov">Correlação de Berkovsky-Polevikov</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Análise de Escala - Dedução da Correlação de  Berkovsky-Polevikov</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#equacoes-de-balanco">Equações de balanço</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analise-de-escala">Análise de Escala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#correlacao-de-berkovsky-polevikov">Correlação de Berkovsky-Polevikov</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="MHD-NaturalConvection-ScaleAnalysis.html">Análise de Escala - MHD</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resultados:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Resultados-1-Bloco-M-120.html"># Natural Convection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Resultados-1-Bloco-M-120.html#Square-Enclosure">Square Enclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Resultados-1-Bloco-M-120.html">Natural Convection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Resultados-4-Bloco-M-120.html">Natural Convection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hiding.html">Hide or remove content</a></li>
 </ul>
 
         </div>
@@ -76,10 +91,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Análise de Escala - Dedução da Correlação de  Berkovsky-Polevikov</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/notebooks/NaturalConvection-ScaleAnalysis.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/notebooks/NaturalConvection-ScaleAnalysis.ipynb" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -87,14 +102,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Análise-de-Escala---Dedução-da-Correlação-de-Berkovsky-Polevikov">
-<h1>Análise de Escala - Dedução da Correlação de Berkovsky-Polevikov<a class="headerlink" href="#Análise-de-Escala---Dedução-da-Correlação-de-Berkovsky-Polevikov" title="Permalink to this heading"></a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="analise-de-escala-deducao-da-correlacao-de-berkovsky-polevikov">
+<h1>Análise de Escala - Dedução da Correlação de  Berkovsky-Polevikov<a class="headerlink" href="#analise-de-escala-deducao-da-correlacao-de-berkovsky-polevikov" title="Permalink to this headline"></a></h1>
 <p>A presente observação parte de uma análise de escala do problema convecção natural em cavidade preenchida com fluido newtoniano e sem blocos interno, seguindo em direção à dedução da correlação de Berkovsky-Polevikov para Nusselt médio, a qual é comumente utilizada para caracterização da transferência de calor em cavidades preenchidas com blocos condutores internos.</p>
 <p><strong>Geometria do Problema:</strong> Considera-se uma cavidade bidimensional de altura <span class="math notranslate nohighlight">\(H\)</span>, comprimento <span class="math notranslate nohighlight">\(L\)</span>, preenchida com um fluido newtoniano.</p>
-<p><img alt="99cc46df106c4d8786d3c20b7a96c62a" src="../_images/Enc.png" /></p>
+<img alt="../_images/Enc.png" src="../_images/Enc.png" />
 <p>Neste problema estamos interessado no comportamento transiente do fluido pela troca de calor através das paredes da cavidade, com as temperaturas de <span class="math notranslate nohighlight">\(+\Delta T/2\)</span> e <span class="math notranslate nohighlight">\(-\Delta T/2\)</span> nas paredes resfriada e aquecida, respectivamente. As paredes superior e inferior <span class="math notranslate nohighlight">\((y=0,H)\)</span> permanecem isoladas através do tempo. As condições iniciais são de temperatura nula para o fluido <span class="math notranslate nohighlight">\((T=0)\)</span> e campo de velocidades nulo <span class="math notranslate nohighlight">\((u=v=0)\)</span>.</p>
-<section id="Equações-de-balanço">
-<h2>Equações de balanço<a class="headerlink" href="#Equações-de-balanço" title="Permalink to this heading"></a></h2>
+<section id="equacoes-de-balanco">
+<h2>Equações de balanço<a class="headerlink" href="#equacoes-de-balanco" title="Permalink to this headline"></a></h2>
 <p>As equações governantes de balanço de massa, quantidade de movimento,e energia em cada ponto da cavidade são descritas por:</p>
 <p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0\)</span></p>
 <p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial u}{\partial t}+u \frac{\partial u}{\partial x}+v \frac{\partial u}{\partial y}=-\frac{1}{\rho} \frac{\partial P}{\partial x}+\nu\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)\)</span></p>
@@ -102,30 +117,29 @@
 <p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial T}{\partial t}+u \frac{\partial T}{\partial x}+v \frac{\partial T}{\partial y}=\alpha\left(\frac{\partial^{2} T}{\partial x^{2}}+\frac{\partial^{2} T}{\partial y^{2}}\right)\)</span></p>
 <p>Destaca-se nas equações de balanço de quantidade de movimento a modelagem do fluido como Boussinesq-incompressível, i.e., <span class="math notranslate nohighlight">\(\rho\)</span> constante em toda equação exceto no termo de força da quantidade de movimento em <span class="math notranslate nohighlight">\(y\)</span>, o qual é representado por <span class="math notranslate nohighlight">\(\rho[1-\beta (T-T_{0})]\)</span>.</p>
 </section>
-<section id="Análise-de-Escala">
-<h2>Análise de Escala<a class="headerlink" href="#Análise-de-Escala" title="Permalink to this heading"></a></h2>
+<section id="analise-de-escala">
+<h2>Análise de Escala<a class="headerlink" href="#analise-de-escala" title="Permalink to this headline"></a></h2>
 <p>Ao invés de resolver numericamente as equações diferenciais parciais descritas acima, dedica-se na presente seção às análises das escalas dos termos para prever teoricamente os tipos de escoamento e padrões de tranferência de calor que se desenvolvem na cavidade. Imediatamente após <span class="math notranslate nohighlight">\(t=0\)</span>, dado que o fluido próximo a cada parede encontra-se parado, a equação do balanço de energia pode ser expressada em escalas de balanço entre a inércia térmica e condutividade normal a parede,</p>
 <p><span class="math notranslate nohighlight">\(\displaystyle\frac{\Delta T}{t} \sim \alpha \frac{\Delta T}{\delta_{T}^{2}}.\)</span></p>
-<p>Esta proporcionalidade de escalas segue do reconhecimento de <span class="math notranslate nohighlight">\(\Delta T\)</span>, <span class="math notranslate nohighlight">\(t\)</span> e <span class="math notranslate nohighlight">\(\delta_{t}\)</span> como escalas de <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(t\)</span> e <span class="math notranslate nohighlight">\(x\)</span> no balanço de energia. Na mesma equação, considera-se <span class="math notranslate nohighlight">\(u=v=0\)</span> e <span class="math notranslate nohighlight">\(\partial^{2} T/\partial y^{2} &lt;&lt; \partial^{2} T/\partial x^{2}\)</span> devido à espessura da camada térmica <span class="math notranslate nohighlight">\(\delta_{t}\)</span> ser muito menor que a altura da cavidade em <span class="math notranslate nohighlight">\(t=0^{+}\)</span> (destaca-se para <span class="math notranslate nohighlight">\(y\sim H\)</span> e <span class="math notranslate nohighlight">\(x \sim \delta_{t}\)</span>). A equação acima dita
-que inicialmente (<span class="math notranslate nohighlight">\(t=0^{+}\)</span>) as paredes resfriadas e aquecidas são revestidas por uma cada condutiva de expessura que aumenta na ordem</p>
+<p>Esta proporcionalidade de escalas segue do reconhecimento de <span class="math notranslate nohighlight">\(\Delta T\)</span>, <span class="math notranslate nohighlight">\(t\)</span> e <span class="math notranslate nohighlight">\(\delta_{t}\)</span> como escalas de <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(t\)</span> e <span class="math notranslate nohighlight">\(x\)</span> no balanço de energia. Na mesma equação, considera-se <span class="math notranslate nohighlight">\(u=v=0\)</span> e <span class="math notranslate nohighlight">\(\partial^{2} T/\partial y^{2} &lt;&lt; \partial^{2} T/\partial x^{2}\)</span> devido à espessura da camada térmica <span class="math notranslate nohighlight">\(\delta_{t}\)</span> ser muito menor que a altura da cavidade em <span class="math notranslate nohighlight">\(t=0^{+}\)</span> (destaca-se para <span class="math notranslate nohighlight">\(y\sim H\)</span> e <span class="math notranslate nohighlight">\(x \sim \delta_{t}\)</span>). A equação acima dita que inicialmente (<span class="math notranslate nohighlight">\(t=0^{+}\)</span>) as paredes resfriadas e aquecidas são revestidas por uma cada condutiva de expessura que aumenta na ordem</p>
 <p><span class="math notranslate nohighlight">\(\delta_{T} \sim(\alpha t)^{1 / 2}.\)</span></p>
 <p>A escala da velocidade é dominada pelo efeito de empuxo na cavidade próximo aos pontos de maior gradiente de temperatura (paredes verticais resfriada e aquecida). Eliminando o termo de pressão (<span class="math notranslate nohighlight">\(P\)</span>) pela junção das equações de quantidade de movimento em <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, tem-se a relação</p>
 <p><span class="math notranslate nohighlight">\(\displaystyle\frac{\partial}{\partial x}\left(\frac{\partial v}{\partial t}+u \frac{\partial v}{\partial x}+v \frac{\partial v}{\partial y}\right)-\frac{\partial}{\partial y}\left(\frac{\partial u}{\partial t}+u \frac{\partial u}{\partial x}+v \frac{\partial u}{\partial y}\right)= v\left[\frac{\partial}{\partial x}\left(\frac{\partial^{2} v}{\partial x^{2}}+\frac{\partial^{2} v}{\partial y^{2}}\right)-\frac{\partial}{\partial y}\left(\frac{\partial^{2} u}{\partial x^{2}}+\frac{\partial^{2} u}{\partial y^{2}}\right)\right]+g \beta \frac{\partial T}{\partial x}\)</span></p>
 <p>representada em função apenas dos termos de velocidade e Boussinesq.</p>
 <p>A equação acima pode ser dividida em três partes: no lado esquerdo da equação tem-se os termos de inércia e no lado direito os termos viscosos e de empuxo. Destacando os termos que predominam em escala de cada uma das partes, têm-se</p>
-<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\partial^{2} v}{\partial x \partial t}}_{Inércia}, \quad \quad \underbrace{\nu\displaystyle\frac{\partial^{3} v}{\partial x^{3}}}_{Viscoso}, \quad \quad \underbrace{g \beta \displaystyle\frac{\partial T}{\partial x}}_{Empuxo} \quad\quad \underbrace{\longrightarrow}_{\textrm{dado a escala de cada termo}} \quad\quad \underbrace{\displaystyle\frac{v}{\delta_{T} t}}_{Inércia}, \quad\quad \underbrace{\nu \displaystyle\frac{v}{\delta_{T}^{3}}}_{Viscoso} \quad \sim \quad \underbrace{\displaystyle\frac{g \beta \Delta T}{\delta_{T}}}_{Empuxo}.\)</span></p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\partial^{2} v}{\partial x \partial t}}_{Inércia}, \quad \quad  \underbrace{\nu\displaystyle\frac{\partial^{3} v}{\partial x^{3}}}_{Viscoso}, \quad \quad \underbrace{g \beta \displaystyle\frac{\partial T}{\partial x}}_{Empuxo} \quad\quad \underbrace{\longrightarrow}_{\textrm{dado a escala de cada termo}} \quad\quad  \underbrace{\displaystyle\frac{v}{\delta_{T} t}}_{Inércia}, \quad\quad \underbrace{\nu \displaystyle\frac{v}{\delta_{T}^{3}}}_{Viscoso} \quad \sim \quad \underbrace{\displaystyle\frac{g \beta \Delta T}{\delta_{T}}}_{Empuxo}.\)</span></p>
 <p>A força que promove o escoamento é dada pelo efeito de empuxo <span class="math notranslate nohighlight">\((g\beta\Delta T)/\delta_{T}\)</span>, a qual deve se balancear em relação as forças de inércia e viscosas durante o escoamento. Dividindo a equação acima pela viscosidade e substituindo a escala de <span class="math notranslate nohighlight">\(\delta_{T}^{2}\sim \alpha t\)</span>, tem-se de acordo com Bejan (2013)</p>
-<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{1}{Pr}}_{Inércia}, \quad \quad \underbrace{1}_{Viscoso}, \quad \sim \quad \underbrace{ \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu v} }_{Empuxo}.\)</span></p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{1}{Pr}}_{Inércia}, \quad \quad  \underbrace{1}_{Viscoso}, \quad  \sim \quad \underbrace{ \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu v} }_{Empuxo}.\)</span></p>
 <p>Bejan (2013) opta por sempre em um somatório escolher o termo de escala dominante, sendo que está escolha elimina casos onde ambos termos no somatório possuem escalas relevantes ao problema. Determinando a escala do termo de velocidade vertical como proposto por Bejan (2013) têm-se:</p>
 <ul class="simple">
 <li><p>Com a predominância do termo de inércia em fluidos com <span class="math notranslate nohighlight">\(Pr&lt;&lt;1 \quad\longrightarrow\quad v \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu }\)</span></p></li>
-<li><p>Com a predominância do termo viscoso em fluidos com <span class="math notranslate nohighlight">\(Pr=1 \textrm{ ou } Pr&gt;&gt;1 \quad\longrightarrow\quad v \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}Pr}{\nu }\)</span></p></li>
+<li><p>Com a predominância do termo viscoso em fluidos com <span class="math notranslate nohighlight">\(Pr=1 \textrm{ ou } Pr&gt;&gt;1 \quad\longrightarrow\quad  v \quad \sim \quad \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}Pr}{\nu }\)</span></p></li>
 </ul>
 <p>Contudo, na presente análise propõe-se manter o somatório de ambas escalas, assim permitindo a utilização tanto dos termos de força viscosa e de inércia para determinação da escala <span class="math notranslate nohighlight">\(v\)</span>, i.e.,</p>
-<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{C_{0}}{Pr}}_{Inertia} \quad + \quad \underbrace{C_{1}}_{Friction} \quad \sim \quad \underbrace{ \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu v} }_{Buoyancy} \quad\quad \longrightarrow \quad\quad v \quad \sim \quad \displaystyle\frac{C_{1}g\beta\Delta T\delta_{T}^{2}}{\nu }\displaystyle\left(\frac{Pr}{C_{0}+Pr}\right)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{C_{0}}{Pr}}_{Inertia} \quad + \quad  \underbrace{C_{1}}_{Friction} \quad  \sim \quad \underbrace{ \displaystyle\frac{g\beta\Delta T\delta_{T}^{2}}{\nu v} }_{Buoyancy} \quad\quad \longrightarrow \quad\quad v \quad \sim \quad \displaystyle\frac{C_{1}g\beta\Delta T\delta_{T}^{2}}{\nu }\displaystyle\left(\frac{Pr}{C_{0}+Pr}\right)\)</span></p>
 <p>onde <span class="math notranslate nohighlight">\(C_{0}\)</span> e <span class="math notranslate nohighlight">\(C_{1}\)</span> são constantes de ajuste dos termos.</p>
 <p>Como próximo passa na análise de escala, a atenção torna-se de volta para a equação de balanço da energia. O calor conduzido das paredes para o fluido pela camada térmica <span class="math notranslate nohighlight">\(\delta_{T}\)</span> não é unicamente gasto através do espaçamento da camada, dado que parte desta entrada de calor é transportada pela camada <span class="math notranslate nohighlight">\(\delta_{T}\)</span> com velocidade <span class="math notranslate nohighlight">\(v\)</span> resultante do empuxo. Consequentimente, a equação da energia resulta na competição entre três efeitos distintos:</p>
-<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\Delta T}{t}}_{Inércia}, \quad \quad \underbrace{v\displaystyle\frac{\Delta T}{H}}_{Convecção}, \quad \quad \underbrace{\alpha\displaystyle\frac{\Delta T}{\delta_{T}^{2}}}_{Condução}.\)</span></p>
+<p><span class="math notranslate nohighlight">\(\underbrace{\displaystyle\frac{\Delta T}{t}}_{Inércia}, \quad \quad  \underbrace{v\displaystyle\frac{\Delta T}{H}}_{Convecção}, \quad \quad \underbrace{\alpha\displaystyle\frac{\Delta T}{\delta_{T}^{2}}}_{Condução}.\)</span></p>
 <p>Com o aumento de <span class="math notranslate nohighlight">\(t\)</span>, o efeito de convecção aumenta enquanto o efeito de inércia diminui em relevância. Considerando o tempo <span class="math notranslate nohighlight">\(t_{f}\)</span> como o momento em que o balanço de energia expressa um equilíbrio entre a condução de calor da parede e a entalpia carregada verticalmente pelo empuxo, tem-se</p>
 <p><span class="math notranslate nohighlight">\(v\displaystyle\frac{\Delta T}{H}\sim \alpha\frac{\Delta T}{\delta_{T}^{2}} \quad \rightarrow \quad t_{f}\sim \left(C_{1} \frac{\nu H}{g\beta \Delta T \alpha} \left(\frac{C_{0}+Pr}{Pr} \right) \right)^{1/2}.\)</span></p>
 <p>Neste tempo, a espessura da camada pode ser aproximada para</p>
@@ -137,25 +151,36 @@ que inicialmente (<span class="math notranslate nohighlight">\(t=0^{+}\)</span>)
 <p>substituindo as equações do fluxo de calor obtém-se na forma final a correlação do número de Nusselt médio que estima a capacidade de transferência de calor através da cavidade:</p>
 <p><span class="math notranslate nohighlight">\(\overline{Nu}=C_{1}\displaystyle\frac{L}{H}\left(Ra_{H}\left( \displaystyle\frac{Pr}{C_{0}+Pr}\right) \right)^{1/4}.\)</span></p>
 </section>
-<section id="Correlação-de-Berkovsky-Polevikov">
-<h2>Correlação de Berkovsky-Polevikov<a class="headerlink" href="#Correlação-de-Berkovsky-Polevikov" title="Permalink to this heading"></a></h2>
+<section id="correlacao-de-berkovsky-polevikov">
+<h2>Correlação de Berkovsky-Polevikov<a class="headerlink" href="#correlacao-de-berkovsky-polevikov" title="Permalink to this headline"></a></h2>
 <p>A correlação de Berkovsky-Polevikov (<a class="reference external" href="http://elib.bsu.by/handle/123456789/10278">http://elib.bsu.by/handle/123456789/10278</a>) é uma correlação comumente utilizada na determinação do número de Nusselt médio para problemas de convecção natural com blocos condutivos internos. Apesar de ter sido obtida por ajuste de curva de resultados de simulação numérica, a correlação</p>
 <p><span class="math notranslate nohighlight">\(\overline{Nu}_{BP}=0,22\left(Ra_{H}\left( \displaystyle\frac{Pr}{0,2+Pr}\right) \right)^{0,28}\left(\displaystyle\frac{L}{H}\right)^{0,09} \quad, \quad 1 \leq\displaystyle\frac{L}{H}\leq 2,\)</span></p>
 <p>pode ser justificada com base na análise de escala desenvolvida e com a consideração de uma cavidade quadrada (i.e., <span class="math notranslate nohighlight">\(H=L\)</span>). Dado as constantes de ajuste <span class="math notranslate nohighlight">\(C_{0}=0,2\)</span> e <span class="math notranslate nohighlight">\(C_{1}=0,22\)</span>, tem-se como uníca diferença os expoentes das equações, sendo 0,25 e 0,28 na presente análise de escala e na correlação Berkovsky-Polevikov.</p>
 <p>Correlação para cavidade quadrada:</p>
 <p><span class="math notranslate nohighlight">\(\textrm{Análise de escala}: \quad \quad \overline{Nu}=0,22\displaystyle\left(Ra_{H}\left( \displaystyle\frac{Pr}{0,2+Pr}\right) \right)^{0,25}.\)</span></p>
 <p><span class="math notranslate nohighlight">\(\textrm{Correlação de Berkovsky-Polevikov}: \quad \quad \overline{Nu}_{BP}=0,22\left(Ra_{H}\left( \displaystyle\frac{Pr}{0,2+Pr}\right) \right)^{0,28}\)</span></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </section>
 </section>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
            </div>
           </div>

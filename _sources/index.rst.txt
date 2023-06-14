@@ -18,6 +18,7 @@ Documentação - LAMP
    :caption: Resultados:
 
    /notebooks/Resultados-1-Bloco-M-120.ipynb
+   /notebooks/hiding.ipynb
 
 Indices and tables
 ==================
